@@ -1,21 +1,7 @@
- Tipografías
-  - Poppins
-  - Montserrat
-  - Roboto 
-  - Open Sans
-  - Lato
-  - Raleway
-  - Lora
+# warmHelp
 
-  - Poppins + Montserrat
-  - Raleway + Montserrat (Viceversa)
-  - Open Sans + Poppins
-  - Raleway + Lora
-  - Open Sans + Roboto (Viceversa)
-  - Roboto + Montserrat
-  - Montserrat
-  - Poppins
-
+Página web dedicada a brindar ayuda emocional y tips de bienestar a través de un chat de IA.
 
 Dependencias para gráficos
- - npm install chart.js 
+
+- npm install chart.js
