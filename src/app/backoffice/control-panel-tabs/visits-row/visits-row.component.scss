@@ -1,0 +1,33 @@
+.customer-satisfaction {
+  span {
+    font-size: 40px;
+  }
+}
+
+.visits-row-container{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 850px) {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-container {
+  width: 100%;
+}
+
+.browser-percents-container {
+  width: 45px;
+  display: flex;
+  justify-content: center;
+}
+
+.legend {
+  span {
+    display: inline-block;
+  }
+}
+

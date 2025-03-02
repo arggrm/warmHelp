@@ -1,0 +1,87 @@
+<div id="profile-container" class="p-3">
+  <!-- Perfil Header -->
+  <div
+    id="profile-header-container"
+    class="w-100 rounded-2 bg-light-container shadow-sm"
+  >
+    <div id="profile-cover-container" class="rounded-top-2">
+      <img
+        src="profile-background.jpg"
+        alt="profile-background"
+        class="background-img"
+      />
+    </div>
+
+    <div
+      id="profile-photo-container"
+      class="d-flex flex-column justify-content-center align-items-center"
+    >
+      <div class="profile-img-wrapper">
+        <img src="profile.jpg" alt="profile" class="profile-img" />
+      </div>
+      <div
+        id="profile-name-container"
+        class="d-flex flex-column justify-content-center align-items-center"
+      >
+        <span class="fw-bold fs-4">Nick Rodríguez</span>
+        <span class="fw-normal text-shadow">Web Developer</span>
+      </div>
+    </div>
+
+    <hr class="text-border-shadow m-0" />
+
+    <div
+      id="profile-data-container"
+      class="d-flex flex-column justify-content-evenly py-3"
+    >
+      <div class="d-flex justify-content-around">
+        <div class="d-flex flex-column align-items-center">
+          <span class="fw-bold fs-4">4</span>
+          <span>Posts</span>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+          <span class="fw-bold fs-4">49</span>
+          <span>Followers</span>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+          <span class="fw-bold fs-4">4</span>
+          <span>Follows</span>
+        </div>
+      </div>
+
+      <div class="w-100 d-flex justify-content-center px-3">
+        <a class="w-100" [routerLink]="['/app/edit-profile']">
+          <button class="btn btn-primary w-100 text-white" >Edit profile</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Perfil Body Nav -->
+  <div id="profile-body-container" class="w-100 rounded-2">
+    <nav id="profile-tabs">
+      <ul class="nav nav-tabs border-0 gap-1">
+        <li class="nav-item" *ngFor="let tab of tabs">
+          <a
+            class="nav-link text-primary border-0"
+            [class.active]="isActiveItems[tab]"
+            (click)="setActiveTab(tab)"
+          >
+            {{ tab | titlecase }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Perfil Body Content -->
+    <div
+      id="profile-body-content"
+      class="bg-light-container rounded-bottom-2 shadow-sm p-3"
+    >
+      <app-about *ngIf="isActiveItems['about']"></app-about>
+      <app-activities *ngIf="isActiveItems['activities']"></app-activities>
+      <app-settings *ngIf="isActiveItems['settings']"></app-settings>
+      <app-projects *ngIf="isActiveItems['projects']"></app-projects>
+    </div>
+  </div>
+</div>

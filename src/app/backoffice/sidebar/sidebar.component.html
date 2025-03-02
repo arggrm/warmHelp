@@ -1,0 +1,90 @@
+<div class="d-flex flex-column text-white h-100 w-100">
+  <div id="sidebar-container" class="d-flex flex-column w-100 overflow-auto">
+    <!--Logo-->
+    <div id="logo-container" class="d-flex align-items-end justify-content-center bg-sidebar pb-3">
+      <a [routerLink]="['/app']" class="text-decoration-none">
+        <img *ngIf="!(isActiveSidebar$ | async)" src="logo-simple.svg" alt="Logo" height="30" />
+        <img *ngIf="isActiveSidebar$ | async" src="logo.svg" alt="Logo" height="30" />
+      </a>
+    </div>
+    
+    <div id="toggle-icon-container">
+      <ul class="p-0 w-100" [class.p-3]="(isActiveSidebar$ | async)">
+        <li class="px-3 py-1 items-menu" *ngIf="isActiveSidebar$ | async">
+          <span class="text-primary text-uppercase fw-bold titulo-menu p-0">
+            menu
+          </span>
+        </li>
+
+        <!-- Opciones menú -->
+        <div class="opciones">
+          <li
+            *ngFor="let item of listSidebar"
+            class="p-0 items-menu hoverable w-100"
+            [class.collapsed]="!(isActiveSidebar$ | async)"
+            [class.px-2]="isActiveSidebar$ | async"
+            [class.py-1]="isActiveSidebar$ | async"
+          >
+            <a
+              class="text-white text-decoration-none d-flex align-items-center"
+              href="{{ item.path }}"
+              [class.p-3]="!(isActiveSidebar$ | async)"
+              [class.justify-content-center]="!(isActiveSidebar$ | async)"
+            >
+              <i
+                class="bi {{ item.icono }} text-primary hoverable"
+                [class.pe-2]="isActiveSidebar$ | async"
+                [class.fs-4]="!(isActiveSidebar$ | async)"
+                [class.fs-5]="isActiveSidebar$ | async"
+              ></i>
+              <span
+                class="items-menu-span text-white"
+                [class.collapsed]="!(isActiveSidebar$ | async)"
+              >
+                {{ item.nombre }}
+              </span>
+            </a>
+          </li>
+        </div>
+  
+        <hr class="text-primary" />
+
+        <!-- Opciones Redes Sociales -->
+        <li class="px-3 py-1 items-menu" *ngIf="isActiveSidebar$ | async">
+          <span class="text-primary text-uppercase fw-bold titulo-menu p-0">
+            redes sociales
+          </span>
+        </li>
+        
+        <div class="opciones">
+          <li
+            *ngFor="let item of socialMediaList"
+            class="p-0 items-menu hoverable"
+            [class.collapsed]="!(isActiveSidebar$ | async)"
+            [class.px-3]="isActiveSidebar$ | async"
+            [class.py-1]="isActiveSidebar$ | async"
+          >
+            <a
+              class="text-white text-decoration-none d-flex align-items-center"
+              [class.p-3]="!(isActiveSidebar$ | async)"
+              [class.justify-content-center]="!(isActiveSidebar$ | async)"
+            >
+              <i
+                class="bi {{ item.icono }} text-primary"
+                [class.pe-2]="isActiveSidebar$ | async"
+                [class.fs-4]="!(isActiveSidebar$ | async)"
+                [class.fs-5]="isActiveSidebar$ | async"
+              ></i>
+              <span
+                class="items-menu-span text-white"
+                [class.collapsed]="!(isActiveSidebar$ | async)"
+              >
+                {{ item.nombre }}
+              </span>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

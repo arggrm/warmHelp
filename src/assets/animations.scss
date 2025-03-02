@@ -1,0 +1,52 @@
+$animation-duration: 0.25s;
+$animation-ease: ease;
+$animation-ease-out: ease-out;
+
+* {
+  transition: all .25s ease;
+}
+
+// Animaciones de entrada y salida
+@mixin slide-in($direction) {
+  from {
+    transform: translate#{$direction}(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate#{$direction}(0);
+    opacity: 1;
+  }
+}
+
+@mixin slide-out($direction) {
+  from {
+    transform: translate#{$direction}(0);
+    opacity: 1;
+  }
+  to {
+    transform: translate#{$direction}(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideDownIn { @include slide-in(Y); }
+@keyframes slideDownOut { @include slide-out(Y); }
+@keyframes slideToRightIn { @include slide-in(X); }
+@keyframes slideToRightOut { @include slide-out(X); }
+@keyframes slideToLeftIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideToLeftOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+
+/* Entrada */
+.slide-down-in { animation: slideDownIn $animation-duration $animation-ease forwards; }
+.slide-left-to-right-in { animation: slideToRightIn $animation-duration $animation-ease forwards; }
+.slide-right-to-left-in { animation: slideToLeftIn $animation-duration $animation-ease forwards; }
+
+/* Salida */
+.slide-down-out { animation: slideDownOut $animation-duration $animation-ease-out forwards; }
+.slide-left-to-right-out { animation: slideToRightOut $animation-duration $animation-ease-out forwards; }
+.slide-right-to-left-out { animation: slideToLeftOut $animation-duration $animation-ease-out forwards; }
+
+
+
+
+

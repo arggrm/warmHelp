@@ -1,0 +1,28 @@
+$white: #ffffff;
+
+$theme-colors: (
+  "light": #ffebc7,
+  "light-container": #fffaf0,
+  "dark": #061831,
+  "primary": #f9461b,
+  "secondary": #ffdc96,
+  "border": #ffc247,
+  "info": #0077cc,
+  "success": #1faa00,
+  "warning": #ffb400,
+  "danger": #d42a00,
+  "shadow": #715321,
+  "border-shadow": #d6c8ab,
+  "sidebar": #0a1d37,
+  "sidebar-hover": #0d2443,
+  "green-graphics": #73cb16,
+  "violet-graphics": #9800e5,
+  "primary-inactive": #f9471b41,
+  "primary-scrollbar-inactive": #f9471b64,
+  "primary-scrollbar": #ff6038dc,
+);
+
+$table-bg: var(--bs-light-container);
+$table-hover-bg: var(--bs-secondary);
+$table-border-color: #dcd8d2,
+;

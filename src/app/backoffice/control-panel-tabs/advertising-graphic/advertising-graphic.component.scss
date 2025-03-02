@@ -1,0 +1,27 @@
+.chart-container {
+    width: 100%;
+    height: 60%;
+}
+
+.canvas-container {
+    width: 100%;
+    height: 100%;
+    max-width: 40dvw;
+    max-height: 40dvh;
+
+    @media (max-width: 1280px) {
+        max-width: 90dvw;
+        min-height: 40dvh;
+    }
+
+    @media (max-width: 850px) {
+        max-width: 80dvw;
+        min-height: 50dvh;
+    }
+}
+
+.legend {
+    span {
+        display: inline-block;
+    }
+}

@@ -1,0 +1,9 @@
+#graphics-stats {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 20px;
+
+    @media (max-width: 1285px) {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,49 @@
+<div
+  class="bg-light-container d-flex flex-column justify-content-around rounded-2 py-3 shadow-sm h-100"
+>
+  <div class="d-flex justify-content-center">
+    <span class="text-primary fw-bold text-uppercase"
+      >Advertising & Promotions
+    </span>
+  </div>
+
+  <div class="chart-container d-flex justify-content-center align-items-center h-100 w-100 p-3 px-5">
+    <div class="canvas-container">
+      <canvas
+        baseChart
+        [data]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [type]="barChartType"
+      >
+      </canvas>
+    </div>
+  </div>
+
+  <hr class="text-border-shadow">
+
+  <div class="mx-3 d-flex justify-content-between">
+    <div class="legend w-100 d-flex justify-content-around">
+      <div>
+        <span class="bg-primary p-2 me-2"></span>
+        <span>Active</span>
+      </div>
+    </div>
+
+    <div class="legend w-100 d-flex justify-content-around">
+      <div>
+        <span class="bg-green-graphics p-2 me-2"></span>
+        <span>Closed</span>
+      </div>
+    </div>
+
+    <div class="legend w-100 d-flex justify-content-around">
+      <div>
+        <span class="bg-violet-graphics p-2 me-2"></span>
+        <span>Hold</span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
