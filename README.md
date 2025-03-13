@@ -9,7 +9,7 @@ Página web dedicada a brindar ayuda emocional y tips de bienestar a través de 
 - **Chart.js:** Librería para renderizar gráficos.
 - **RxJS:** Para manejar flujos asíncronos y la reactividad.
 - **Bootstrap:** Para el diseño y la interfaz responsiva.
-- **sweetalert2:** Librería de JS para alertas y popup boxes.
+- **SweetAlert2:** Librería de JS para alertas y popup boxes.
 
 ## Copyright
 ©2024. Aryie Ramírez
