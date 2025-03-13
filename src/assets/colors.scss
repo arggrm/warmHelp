@@ -1,28 +1,53 @@
 $white: #ffffff;
 
 $theme-colors: (
-  "light": #ffebc7,
-  "light-container": #fffaf0,
-  "dark": #061831,
-  "primary": #f9461b,
-  "secondary": #ffdc96,
-  "border": #ffc247,
+  "light": #ecf4ff,
+  "dark": #0b1b30,
+  "primary": #de2c00,
+  "secondary": #87b7f9,
   "info": #0077cc,
   "success": #1faa00,
   "warning": #ffb400,
-  "danger": #d42a00,
-  "shadow": #715321,
-  "border-shadow": #d6c8ab,
+  "danger": #c60700,
+
+  // Text
+  "primary-header": #f9461b,
+  "dark-secondary": #0c213d,
+  "dark-progressbar": #0d305d,
+  "background": #2e568e,
+  "light-container": #a0c5f6,
+  "light-border": #456ca3,
+  "shadow": #7a94b9,
+  "border": #2e568e,
+  "border-shadow": #96aed0,
   "sidebar": #0a1d37,
   "sidebar-hover": #0d2443,
-  "green-graphics": #73cb16,
-  "violet-graphics": #9800e5,
+  "icon-inactive": #4a658b,
+  "title-sidebar": #2e568e,
+  "hover": #163255,
+  "hover-active": #335c8f,
+  "i-secondary": #2e568e,
+  "btn-inactive": #0b1b30,
+  "btn-hover": #163255,
+  "link": #f03000,
+  "link-hover": #d12a00,
+
+  "info-container": #004a80,
+  "success-container": #166e02,
+  "warning-container": #8a6000,
+  "danger-container": #710400,
+  "primary-container": #8e1c00,
+  "shadow-container": #3c4b5d,
+  "violet-border": #9800e5,
+  "violet-container": #4b0070,
+  // Graphics
   "primary-inactive": #f9471b41,
   "primary-scrollbar-inactive": #f9471b64,
   "primary-scrollbar": #ff6038dc,
 );
 
-$table-bg: var(--bs-light-container);
-$table-hover-bg: var(--bs-secondary);
-$table-border-color: #dcd8d2,
-;
+$table-bg: var(--bs-dark-secondary);
+$table-hover-bg: var(--bs-hover);
+$table-border-color: var(--bs-light-border);
+
+$box-shadow-lg: 0 1rem 3rem rgba(black, 0.7);

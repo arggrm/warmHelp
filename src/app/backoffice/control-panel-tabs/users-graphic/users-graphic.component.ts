@@ -11,11 +11,11 @@ import { BaseChartDirective } from 'ng2-charts';
 })
 export class UsersGraphicComponent implements OnInit {
 
-  public lineChartData!: ChartConfiguration['data']; 
+  public lineChartData!: ChartConfiguration['data'];
   public lineChartOptions: ChartConfiguration['options'] = this.getLineChartOptions();
   public lineChartType: ChartType = 'line';
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.setChartData();
@@ -26,12 +26,23 @@ export class UsersGraphicComponent implements OnInit {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { display: true, position: 'bottom' },
+        legend: { 
+          display: true, 
+          position: 'bottom', 
+          labels: { color: '#ecf4ff' } 
+        },
         title: { display: false, text: 'Ventas Mensuales' }
       },
       scales: {
-        x: { grid: { display: true } },
-        y: { beginAtZero: true }
+        x: {
+          grid: { display: true, color: '#456ca3' },
+          ticks: { color: '#456ca3' }
+        },
+        y: {
+          beginAtZero: true,
+          grid: { color: '#456ca3' },
+          ticks: { color: '#456ca3' }
+        }
       }
     };
   }
@@ -57,7 +68,8 @@ export class UsersGraphicComponent implements OnInit {
         fill: false,
         borderColor: '#f9461b',
         backgroundColor: '#f9461b',
-        tension: 0.3
+        tension: 0.1,
+        borderWidth: 5
       },
       {
         label: 'iOS',
@@ -65,7 +77,8 @@ export class UsersGraphicComponent implements OnInit {
         fill: false,
         borderColor: '#0077cc',
         backgroundColor: '#0077cc',
-        tension: 0.3
+        tension: 0.1,
+        borderWidth: 5
       },
       {
         label: 'PC',
@@ -73,7 +86,8 @@ export class UsersGraphicComponent implements OnInit {
         fill: false,
         borderColor: '#9800e5',
         backgroundColor: '#9800e5',
-        tension: 0.3
+        tension: 0.1,
+        borderWidth: 5
       }
     ];
   }

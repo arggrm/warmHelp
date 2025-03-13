@@ -21,12 +21,10 @@ export default class LayoutBackComponent implements OnInit {
 
   isActiveSidebar: boolean = false;
 
-  constructor(
-    private readonly sidebarStatusService: SidebarStatusService
-  ) { }
+  constructor(private readonly sidebarStatusService: SidebarStatusService) { }
   ngOnInit():void {
-    this.sidebarStatusService.sidebarStatus$.subscribe(valorProcedenteDelHeader => {
-      this.isActiveSidebar = valorProcedenteDelHeader;
+    this.sidebarStatusService.sidebarStatus$.subscribe(value => {
+      this.isActiveSidebar = value;
     })
   }
 }

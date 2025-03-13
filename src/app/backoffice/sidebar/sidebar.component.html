@@ -3,15 +3,15 @@
     <!--Logo-->
     <div id="logo-container" class="d-flex align-items-end justify-content-center bg-sidebar pb-3">
       <a [routerLink]="['/app']" class="text-decoration-none">
-        <img *ngIf="!(isActiveSidebar$ | async)" src="logo-simple.svg" alt="Logo" height="30" />
-        <img *ngIf="isActiveSidebar$ | async" src="logo.svg" alt="Logo" height="30" />
+        <img *ngIf="!isActiveSidebar" src="logo-simple.svg" alt="Logo" height="25" />
+        <img *ngIf="isActiveSidebar" src="logo.svg" alt="Logo" height="30" />
       </a>
     </div>
     
     <div id="toggle-icon-container">
-      <ul class="p-0 w-100" [class.p-3]="(isActiveSidebar$ | async)">
-        <li class="px-3 py-1 items-menu" *ngIf="isActiveSidebar$ | async">
-          <span class="text-primary text-uppercase fw-bold titulo-menu p-0">
+      <ul class="p-0 w-100" [class.px-3]="isActiveSidebar">
+        <li class="px-2 py-1" *ngIf="isActiveSidebar">
+          <span class="text-title-sidebar text-uppercase fw-bold titulo-menu p-0">
             menu
           </span>
         </li>
@@ -21,25 +21,24 @@
           <li
             *ngFor="let item of listSidebar"
             class="p-0 items-menu hoverable w-100"
-            [class.collapsed]="!(isActiveSidebar$ | async)"
-            [class.px-2]="isActiveSidebar$ | async"
-            [class.py-1]="isActiveSidebar$ | async"
+            [class.collapsed]="!isActiveSidebar"
+            [class.px-3]="isActiveSidebar"
+            [class.py-1]="isActiveSidebar"
           >
             <a
               class="text-white text-decoration-none d-flex align-items-center"
               href="{{ item.path }}"
-              [class.p-3]="!(isActiveSidebar$ | async)"
-              [class.justify-content-center]="!(isActiveSidebar$ | async)"
+              [class.p-2]="!isActiveSidebar"
+              [class.justify-content-center]="!isActiveSidebar"
+              (click)="item.click ? item.click() : null"
             >
               <i
-                class="bi {{ item.icono }} text-primary hoverable"
-                [class.pe-2]="isActiveSidebar$ | async"
-                [class.fs-4]="!(isActiveSidebar$ | async)"
-                [class.fs-5]="isActiveSidebar$ | async"
+                class="bi {{ item.icono }} text-icon-inactive fs-5"
+                [class.pe-2]="isActiveSidebar"
               ></i>
               <span
-                class="items-menu-span text-white"
-                [class.collapsed]="!(isActiveSidebar$ | async)"
+                class="items-menu-span text-white fw-lighter"
+                [class.collapsed]="!isActiveSidebar"
               >
                 {{ item.nombre }}
               </span>
@@ -47,11 +46,11 @@
           </li>
         </div>
   
-        <hr class="text-primary" />
+        <hr class="text-icon-inactive my-2" />
 
         <!-- Opciones Redes Sociales -->
-        <li class="px-3 py-1 items-menu" *ngIf="isActiveSidebar$ | async">
-          <span class="text-primary text-uppercase fw-bold titulo-menu p-0">
+        <li class="px-2 py-1" *ngIf="isActiveSidebar">
+          <span class="text-title-sidebar text-uppercase fw-bold titulo-menu p-0">
             redes sociales
           </span>
         </li>
@@ -59,25 +58,23 @@
         <div class="opciones">
           <li
             *ngFor="let item of socialMediaList"
-            class="p-0 items-menu hoverable"
-            [class.collapsed]="!(isActiveSidebar$ | async)"
-            [class.px-3]="isActiveSidebar$ | async"
-            [class.py-1]="isActiveSidebar$ | async"
+            class="p-0 items-menu hoverable w-100"
+            [class.collapsed]="!isActiveSidebar"
+            [class.px-3]="isActiveSidebar"
+            [class.py-1]="isActiveSidebar"
           >
             <a
               class="text-white text-decoration-none d-flex align-items-center"
-              [class.p-3]="!(isActiveSidebar$ | async)"
-              [class.justify-content-center]="!(isActiveSidebar$ | async)"
+              [class.p-2]="!isActiveSidebar"
+              [class.justify-content-center]="!isActiveSidebar"
             >
               <i
-                class="bi {{ item.icono }} text-primary"
-                [class.pe-2]="isActiveSidebar$ | async"
-                [class.fs-4]="!(isActiveSidebar$ | async)"
-                [class.fs-5]="isActiveSidebar$ | async"
+                class="bi {{ item.icono }} text-icon-inactive fs-5"
+                [class.pe-2]="isActiveSidebar"
               ></i>
               <span
-                class="items-menu-span text-white"
-                [class.collapsed]="!(isActiveSidebar$ | async)"
+                class="items-menu-span text-white fw-lighter"
+                [class.collapsed]="!isActiveSidebar"
               >
                 {{ item.nombre }}
               </span>

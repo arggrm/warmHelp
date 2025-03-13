@@ -14,6 +14,7 @@ export class VisitsGraphicComponent implements OnInit {
   public doughnutChartLabels: string[] = [];
   public doughnutChartData: { labels: string[], datasets: ChartDataset<'doughnut'>[] } = this.getInitialDoughnutChartData();
   public doughnutChartType: ChartType = 'doughnut';
+  public borderColors: string[] = this.getBorderColors();
 
   ngOnInit(): void {
     this.setChartData();
@@ -42,7 +43,8 @@ export class VisitsGraphicComponent implements OnInit {
         data: [],
         backgroundColor: [],
         hoverBackgroundColor: [],
-        borderWidth: 0,
+        borderWidth: 1,
+        borderColor: [],
       }]
     };
   }
@@ -51,6 +53,7 @@ export class VisitsGraphicComponent implements OnInit {
     const labels = this.getChartLabels();
     const data = this.getChartData();
     const colors = this.getChartColors();
+    const borderColors = this.getBorderColors();
 
     this.doughnutChartLabels = labels;
     this.doughnutChartData.labels = labels;
@@ -58,6 +61,7 @@ export class VisitsGraphicComponent implements OnInit {
     datasets.data = data;
     datasets.backgroundColor = colors;
     datasets.hoverBackgroundColor = colors;
+    datasets.borderColor = borderColors;
   }
 
   private getChartLabels(): string[] {
@@ -69,7 +73,11 @@ export class VisitsGraphicComponent implements OnInit {
   }
 
   private getChartColors(): string[] {
-    return ['#0077cc', '#ffd900', '#f9461b'];
+    return ['#004a80', '#8a6000', '#8e1c00'];
+  }
+
+  private getBorderColors(): string[] {
+    return ['#0077cc', '#ffb400', '#f9461b'];
   }
 
 }

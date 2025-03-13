@@ -2,10 +2,10 @@
   <div class="h-100">
     <!-- Visits -->
     <div
-      class="bg-light-container d-flex flex-column justify-content-around rounded-2 shadow-sm py-3 h-100"
+      class="bg-dark-container border border-light-border d-flex flex-column justify-content-around rounded-2 shadow-sm py-3 h-100"
     >
-      <div class="d-flex justify-content-center">
-        <span class="text-primary fw-bold text-uppercase">Visits</span>
+      <div class="px-4">
+        <span class="text-shadow fs-5 fw-bold">Visits</span>
       </div>
       <div
         class="chart-container d-flex justify-content-center align-items-center h-100 w-100 py-3"
@@ -13,31 +13,31 @@
         <app-visits-graphic></app-visits-graphic>
       </div>
 
-      <hr class="text-border-shadow" />
+      <hr class="text-light-border" />
 
-      <div class="px-5">
+      <div class="px-4">
         <div class="legend w-100 d-flex justify-content-between">
           <div>
-            <span class="bg-info p-2 me-2"></span>
-            <span>Organic</span>
+            <span class="bg-info-container p-2 me-2"></span>
+            <span class="text-light fw-lighter">Organic</span>
           </div>
-          <span class="fw-bold">44.46%</span>
+          <span class="text-light fw-light">44.46%</span>
         </div>
 
         <div class="legend w-100 d-flex justify-content-between">
           <div>
-            <span class="bg-warning p-2 me-2"></span>
-            <span>Referal</span>
+            <span class="bg-warning-container p-2 me-2"></span>
+            <span class="text-light fw-lighter">Referal</span>
           </div>
-          <span class="fw-bold">5.54%</span>
+          <span class="text-light fw-light">5.54%</span>
         </div>
 
         <div class="legend w-100 d-flex justify-content-between">
           <div>
-            <span class="bg-primary p-2 me-2"></span>
-            <span>Others</span>
+            <span class="bg-primary-container p-2 me-2"></span>
+            <span class="text-light fw-lighter">Others</span>
           </div>
-          <span class="fw-bold">50%</span>
+          <span class="text-light fw-light">50%</span>
         </div>
       </div>
     </div>
@@ -47,25 +47,23 @@
     <div class="d-flex flex-column h-100 justify-content-between gap-3">
       <!-- Customer Satisfaction -->
       <div
-        class="bg-light-container d-flex flex-column justify-content-around rounded-2 shadow-sm h-50 py-3"
+        class="bg-dark-container border border-light-border d-flex flex-column justify-content-around rounded-2 shadow-sm h-50 py-3"
       >
-        <div class="d-flex justify-content-center">
-          <span class="text-primary fw-bold text-uppercase"
-            >Customer Satisfaction</span
-          >
+        <div class="px-4">
+          <span class="text-shadow fs-5 fw-bold">Customer Satisfaction</span>
         </div>
         <div class="w-100 text-success fw-bold d-flex align-items-center">
           <div
             class="customer-satisfaction w-100 d-flex flex-column align-items-center"
           >
-            <span>80.2%</span>
+            <span class="stroke-success">80.2%</span>
           </div>
         </div>
         <!-- Barra progreso -->
-        <div class="px-3">
-          <div class="progress">
+        <div class="px-4">
+          <div class="progress bg-dark-secondary border border-success">
             <div
-              class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+              class="progress-bar border-end border-success bg-success-container"
               role="progressbar"
               style="width: 80.2%"
               aria-valuenow="80.2"
@@ -75,21 +73,21 @@
           </div>
         </div>
 
-        <hr class="text-border-shadow" />
+        <hr class="text-light-border" />
 
-        <div class="px-3">
+        <div class="px-4">
           <ul class="d-flex justify-content-between list-unstyled m-0">
             <li class="d-flex flex-column align-items-center">
-              <span class="d-block">Previous</span>
-              <span class="d-block fw-bold">80.2%</span>
+              <span class="d-block text-light fw-lighter">Previous</span>
+              <span class="d-block text-light fw-light fs-5">80.2%</span>
             </li>
             <li class="d-flex flex-column align-items-center">
-              <span class="d-block">% Change</span>
-              <span class="d-block fw-bold">+18</span>
+              <span class="d-block text-light fw-lighter">% Change</span>
+              <span class="d-block text-light fw-light fs-5">+18</span>
             </li>
             <li class="d-flex flex-column align-items-center">
-              <span class="d-block">Trend</span>
-              <i class="bi bi-graph-up-arrow text-success fw-bold"></i>
+              <span class="d-block text-light fw-lighter">Trend</span>
+              <i class="bi bi-graph-up-arrow text-success fs-4"></i>
             </li>
           </ul>
         </div>
@@ -97,40 +95,40 @@
 
       <!-- Browser Stats -->
       <div
-        class="bg-light-container d-flex flex-column justify-content-around rounded-2 shadow-sm h-50 py-3"
+        class="bg-dark-container border border-light-border d-flex flex-column justify-content-around rounded-2 shadow-sm h-50 py-3"
       >
-        <div class="d-flex justify-content-center">
-          <span class="text-primary fw-bold text-uppercase">Browser Stats</span>
+        <div class="px-4 mb-2">
+          <span class="text-shadow fs-5 fw-bold">Browser Stats</span>
         </div>
         <div class="">
-          <div class="d-flex justify-content-between px-3">
-            <span>Google Chrome</span>
+          <div class="d-flex justify-content-between px-4">
+            <span class="text-light fw-lighter">Google Chrome</span>
             <span
-              class="browser-percents-container bg-info text-white px-2 rounded-pill"
+              class="browser-percents-container bg-info-container border border-info text-light fw-light px-2 rounded-pill"
               >50%</span
             >
           </div>
-          <hr class="text-border-shadow my-2" />
-          <div class="d-flex justify-content-between px-3">
-            <span>Safari</span>
+          <hr class="text-light-border my-2" />
+          <div class="d-flex justify-content-between px-4">
+            <span class="text-light fw-lighter">Safari</span>
             <span
-              class="browser-percents-container bg-success text-white px-2 rounded-pill"
+              class="browser-percents-container bg-success-container border border-success text-light fw-light px-2 rounded-pill"
               >15%</span
             >
           </div>
-          <hr class="text-border-shadow my-2" />
-          <div class="d-flex justify-content-between px-3">
-            <span>Mozilla Firefox</span>
+          <hr class="text-light-border my-2" />
+          <div class="d-flex justify-content-between px-4">
+            <span class="text-light fw-lighter">Mozilla Firefox</span>
             <span
-              class="browser-percents-container bg-warning text-white px-2 rounded-pill"
+              class="browser-percents-container bg-warning-container border border-warning text-light fw-light px-2 rounded-pill"
               >20%</span
             >
           </div>
-          <hr class="text-border-shadow my-2" />
-          <div class="d-flex justify-content-between px-3">
-            <span>Microsoft Edge</span>
+          <hr class="text-light-border my-2" />
+          <div class="d-flex justify-content-between px-4">
+            <span class="text-light fw-lighter">Microsoft Edge</span>
             <span
-              class="browser-percents-container bg-danger text-white px-2 rounded-pill"
+              class="browser-percents-container bg-danger-container border border-danger text-light fw-light px-2 rounded-pill"
               >15%</span
             >
           </div>

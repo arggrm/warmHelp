@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { SidebarStatusService } from '../../services/status/sidebar-status.service';
 import { RouterModule } from '@angular/router';
-import { Observable } from 'rxjs';
+import { TokenService } from '../../services/auth/token.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,16 +12,16 @@ import { Observable } from 'rxjs';
 })
 export class SidebarComponent implements OnInit {
 
-  isActiveSidebar$: Observable<boolean> | undefined;
+  isActiveSidebar: boolean = false;
 
-  listSidebar = [
+  readonly listSidebar = [
     { nombre: 'Inicio', icono: 'bi-house-fill', path: 'app' },
-    { nombre: 'Perfil', icono: 'bi-person-fill', path: 'app/profile' },
-    { nombre: 'Editar perfil', icono: 'bi-pencil-fill' },
-    { nombre: 'Productos', icono: 'bi-box-seam-fill' },
-    { nombre: 'Cerrar Sesión', icono: 'bi-door-open-fill' },
+    { nombre: 'Mi perfil', icono: 'bi-person-fill', path: 'app/profile' },
+    { nombre: 'Editar perfil', icono: 'bi-pencil-fill', path: 'app/edit-profile' },
+    { nombre: 'Mis productos', icono: 'bi-box-seam-fill', path: 'app/my-products' },
+    { nombre: 'Cerrar Sesión', icono: 'bi-door-open-fill', path: 'login', click: () => this.logout() },
   ];
-  socialMediaList = [
+  readonly socialMediaList = [
     { nombre: 'Facebook', icono: 'bi-facebook' },
     { nombre: 'X (Twitter)', icono: 'bi-twitter-x' },
     { nombre: 'Instagram', icono: 'bi-instagram' },
@@ -29,13 +29,17 @@ export class SidebarComponent implements OnInit {
     { nombre: 'YouTube', icono: 'bi-youtube' },
   ];
   constructor(
-    private readonly sidebarStatusService: SidebarStatusService
+    private readonly sidebarStatusService: SidebarStatusService,
+    private readonly tokenService: TokenService,
   ) { }
 
   ngOnInit(): void {
-    this.isActiveSidebar$ = this.sidebarStatusService.sidebarStatus$;
+    this.sidebarStatusService.sidebarStatus$.subscribe(value => {
+      this.isActiveSidebar = value;
+    })
   }
-  toggleSidebar(status: boolean): void {
-    this.sidebarStatusService.changeStatus(status);
+
+  logout(): void {
+    this.tokenService.removeToken()
   }
 }

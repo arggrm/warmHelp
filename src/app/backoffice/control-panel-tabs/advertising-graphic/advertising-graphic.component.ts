@@ -26,31 +26,40 @@ export class AdvertisingGraphicComponent {
       plugins: {
         legend: {
           display: false,
-          position: 'top',
         },
-        title: {
-          display: false,
-          text: 'Monthly Cases'
-        }
       },
       scales: {
-        y: { stacked: true, beginAtZero: true },
-        x: { stacked: true, },
+        y: {
+          stacked: true, beginAtZero: true, grid: {
+            color: '#456ca3'
+          },
+          ticks: {
+            color: '#456ca3'
+          }
+        },
+        x: {
+          stacked: true, grid: {
+            color: '#456ca3'
+          },
+          ticks: {
+            color: '#456ca3'
+          }
+        },
       }
     }
   }
 
   private getBarChartLabels(): string[] {
-    return ['January', 'February', 'March', 'April', 'May', 'June'];
+    return ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
   }
 
   private getBarChartData(): ChartConfiguration['data'] {
     return {
       labels: this.barChartLabels,
       datasets: [
-        { data: [30, 50, 40, 70, 90, 60], label: 'Active', backgroundColor: '#f9461b' },
-        { data: [20, 30, 50, 60, 80, 40], label: 'Closed', backgroundColor: '#73cb16' },
-        { data: [10, 40, 30, 50, 70, 50], label: 'Hold', backgroundColor: '#9800e5' }
+        { data: [30, 50, 40, 70, 90, 60], label: 'Active', backgroundColor: '#004a80', borderColor: '#0077cc', borderWidth: 1 },
+        { data: [20, 30, 50, 60, 80, 40], label: 'Closed', backgroundColor: '#710400', borderColor: '#c60700', borderWidth: 1 },
+        { data: [10, 40, 30, 50, 70, 50], label: 'Hold', backgroundColor: '#3c4b5d', borderColor: '#7a94b9', borderWidth: 1 }
       ]
     };
   }

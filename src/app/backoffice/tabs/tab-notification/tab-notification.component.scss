@@ -1,5 +1,5 @@
 .notification-container {
-  top: 55px;
+  top: 60px;
   right: -85px;
   width: 450px;
   min-width: 450px;
@@ -29,5 +29,20 @@
         height: 30px;
       }
     }
+  }
+
+  .message-container:hover {
+    cursor: pointer;
+    background-color: var(--bs-hover);
+  }
+
+  .hover-underline:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .hover-color:hover {
+    color: var(--bs-hover-active) !important;
+    cursor: pointer;
   }
 }

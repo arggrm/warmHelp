@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { HeaderButtonsStatusService, HeaderButtonStatus } from '../../../services/status/header-buttons-status.service';
 import { Subscription } from 'rxjs';
 
@@ -19,7 +19,8 @@ export class TabSettingsComponent implements OnInit, OnDestroy {
   private subscription: Subscription | undefined;
 
   constructor(
-    private readonly headerButtonsStatusService: HeaderButtonsStatusService
+    private readonly elRef: ElementRef,
+    private readonly headerButtonsStatusService: HeaderButtonsStatusService,
   ) {
   }
 
@@ -32,6 +33,13 @@ export class TabSettingsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event): void {
+    if (!this.elRef.nativeElement.contains(event.target)) {
+      this.headerButtonsStatusService.closeTab("isActiveSettings");
     }
   }
 }

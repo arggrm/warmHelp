@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {TruncateTextPipe} from '../../../services/pipes/truncate-text.pipe';
+import { Component, ElementRef, HostListener } from '@angular/core';
+import { TruncateTextPipe } from '../../../services/pipes/truncate-text.pipe';
+import { HeaderButtonsStatusService } from '../../../services/status/header-buttons-status.service';
 
 @Component({
   selector: 'app-tab-notification',
@@ -11,4 +12,15 @@ import {TruncateTextPipe} from '../../../services/pipes/truncate-text.pipe';
 })
 export class TabNotificationComponent {
 
+  constructor(
+    private readonly elRef: ElementRef,
+    private readonly headerButtonsStatusService: HeaderButtonsStatusService,
+  ) { }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event): void {
+    if (!this.elRef.nativeElement.contains(event.target)) {
+      this.headerButtonsStatusService.closeTab("isActiveNotification");
+    }
+  }
 }

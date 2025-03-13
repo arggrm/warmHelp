@@ -1,0 +1,30 @@
+.auth-container {
+    width: 95%;
+    max-width: 600px;
+    min-height: calc(100vh - 135px);
+}
+
+.custom-floating {
+    input {
+        border-color: var(--bs-light-border);
+        background-color: var(--bs-dark-secondary);
+    
+    }
+    
+    select {
+        border-color: var(--bs-light-border);
+        background-color: var(--bs-dark-secondary);
+
+        option {
+            color: var(--bs-light);
+        }
+    }
+
+    label::after {
+        background-color: var(--bs-dark-secondary);
+    }
+}
+
+.translate-again-y {
+    transform: translateY(-80%) !important;
+}

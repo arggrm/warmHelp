@@ -1,4 +1,20 @@
 .auth-container {
     width: 95%;
-    max-width: 500px;
+    max-width: 600px;
+    min-height: calc(100vh - 135px);
+}
+
+a:hover {
+    color: var(--bs-link-hover) !important;
+}
+
+.custom-floating {
+    input {
+        border-color: var(--bs-border-shadow);
+        background-color: var(--bs-dark-secondary);
+    }
+
+    label::after {
+        background-color: var(--bs-dark-secondary);
+    }
 }

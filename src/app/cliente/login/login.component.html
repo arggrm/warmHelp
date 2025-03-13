@@ -1,22 +1,53 @@
-<div class="auth-container position-relative m-auto my-5 py-5 px-3 bg-white shadow-sm rounded-3 border border-light-subtle">
-
-    <div class="mb-2 border-bottom border-light-subtle pb-2">
-      <h2 class="mb-0 h4">Iniciar sesión</h2>
-    </div>
-    <form method="post" [formGroup]="loginForm" (ngSubmit)="submit()">
-      <div class="mb-3">
-        <label class="form-label" for="username">Usuario</label>
-        <input id="username" class="form-control form-control-sm" type="text" placeholder="Camilo" formControlName="username">
-      </div>
-  
-      <div class="mb-4">
-        <label class="form-label" for="password">Contraseña</label>
-        <input id="password" class="form-control form-control-sm" type="password" placeholder="*****" formControlName="password">
-      </div>
-  
-      <div class="mb-0">
-        <button type="submit" class="btn btn-sm btn-primary w-100" [disabled]="loginForm.invalid">Entrar</button>
-      </div>
-    </form>
-  
+<div class="auth-container d-flex flex-column justify-content-center m-auto py-5 px-3">
+  <div class="mb-4 w-100">
+    <h1 class="mb-0 text-center text-primary-header fw-semibold">Iniciar sesión</h1>
   </div>
+  <form method="post" [formGroup]="loginForm" (ngSubmit)="submit()">
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        id="floatingUsername"
+        class="form-control border-light-border text-light"
+        type="text"
+        formControlName="username"
+        placeholder="Usuario"
+      />
+      <label for="floatingUsername" class="text-shadow fw-semibold"
+        >Usuario</label
+      >
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        id="floatingPassword"
+        class="form-control border-light-border text-light"
+        type="password"
+        formControlName="password"
+        placeholder="Contraseña"
+      />
+      <label
+        for="floatingPassword"
+        class="fw-semibold text-shadow"
+        for="password"
+        >Contraseña</label
+      >
+    </div>
+
+    <div class="mb-0">
+      <button
+        type="submit"
+        class="btn btn-md p-3 btn-primary-container border border-primary text-white w-100"
+        [disabled]="loginForm.invalid"
+      >
+        Entrar
+      </button>
+    </div>
+    <hr class="my-3" />
+    <div class="w-100 text-center mt-3 text-shadow">
+      <span>¿No tienes cuenta?</span>
+      <a class="text-decoration-none text-link ms-1" [routerLink]="['/register']">
+        Regístrate
+      </a>
+    </div>
+  </form>
+</div>

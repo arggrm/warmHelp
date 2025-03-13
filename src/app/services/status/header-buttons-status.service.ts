@@ -22,16 +22,15 @@ export class HeaderButtonsStatusService {
 
   toggleItem(item: keyof HeaderButtonStatus): void {
     const currentItems = this.isActiveItemsSubject.value;
+    const newItems = { ...currentItems, [item]: !currentItems[item] };
 
-     // Se desactivan todos los botones primero
-     const newItems = {
-      isActiveNotification: false,
-      isActiveSettings: false,
-      isActiveProfile: false
-    };
+    this.isActiveItemsSubject.next(newItems);
+  }
 
-    // Luego se activa solo el botón seleccionado
-    newItems[item] = !currentItems[item];
+  closeTab(item: keyof HeaderButtonStatus): void {
+    const currentItems = this.isActiveItemsSubject.value;
+    const newItems = { ...currentItems, [item]: false };
+
     this.isActiveItemsSubject.next(newItems);
   }
 }

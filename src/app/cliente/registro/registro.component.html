@@ -1,1 +1,186 @@
-<p>registro works!</p>
+<div
+  class="auth-container d-flex flex-column justify-content-center m-auto py-5 px-3"
+>
+  <div class="mb-3 pb-2 w-100">
+    <h1 class="mb-0 text-center text-primary-header fw-semibold">Registro</h1>
+  </div>
+
+  <div
+    id="information-container"
+    class="bg-dark-secondary border border-light-border rounded-3 p-3"
+  >
+    <form method="post" [formGroup]="registerForm" (ngSubmit)="submit()">
+      <div class="form-floating custom-floating mb-3">
+        <input
+          id="floatingUsername"
+          class="form-control text-light"
+          type="text"
+          formControlName="username"
+          placeholder="Usuario"
+          [class.is-invalid]="
+            registerForm.get('username')?.invalid &&
+            registerForm.get('username')?.touched
+          "
+        />
+        <label for="floatingUsername" class="text-shadow fw-semibold"
+          >Usuario</label
+        >
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.get('username')?.invalid &&
+            registerForm.get('username')?.touched
+          "
+        >
+          El usuario es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-floating custom-floating mb-3 position-relative">
+        <input
+          id="floatingPassword"
+          class="form-control text-light"
+          [type]="passwordVisible ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="Contraseña"
+          [class.is-invalid]="
+            registerForm.get('password')?.invalid &&
+            registerForm.get('password')?.touched
+          "
+        />
+        <label for="floatingPassword" class="form-label text-shadow fw-semibold"
+          >Contraseña</label
+        >
+        <button
+          type="button"
+          class="btn position-absolute end-0 me-2 top-50 translate-middle-y"
+          *ngIf="registerForm.get('password')?.value"
+          (click)="togglePasswordVisibility()"
+        >
+          <i
+            class="bi text-shadow"
+            [ngClass]="passwordVisible ? 'bi-eye-slash-fill' : 'bi-eye-fill'"
+          ></i>
+        </button>
+
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.get('password')?.invalid &&
+            registerForm.get('password')?.touched
+          "
+        >
+          La contraseña es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-floating custom-floating mb-3">
+        <select
+          class="form-select text-light"
+          id="floatingSelectRole"
+          formControlName="roleName"
+          placeholder="Tipo de usuario"
+          [class.is-invalid]="
+            registerForm.get('roleName')?.invalid &&
+            registerForm.get('roleName')?.touched
+          "
+        >
+          <option value="ADMIN">Administrador</option>
+          <option value="CLIENT">Cliente</option>
+          <option value="SELLER">Vendedor</option>
+        </select>
+        <label for="floatingSelectRole" class="text-shadow fw-semibold"
+          >Tipo de usuario</label
+        >
+        <div class="invalid-feedback">El tipo de usuario es obligatorio.</div>
+      </div>
+
+      <div class="form-floating custom-floating mb-3">
+        <input
+          id="floatingFirstName"
+          class="form-control text-light"
+          type="text"
+          formControlName="firstName"
+          placeholder="Nombre"
+          [class.is-invalid]="
+            registerForm.get('firstName')?.invalid &&
+            registerForm.get('firstName')?.touched
+          "
+        />
+        <label for="floatingFirstName" class="text-shadow fw-semibold"
+          >Nombre</label
+        >
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.get('firstName')?.invalid &&
+            registerForm.get('firstName')?.touched
+          "
+        >
+          El nombre es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-floating custom-floating mb-3">
+        <input
+          id="floatingLastName"
+          class="form-control text-light"
+          type="text"
+          formControlName="lastName"
+          placeholder="Apellidos"
+          [class.is-invalid]="
+            registerForm.get('lastName')?.invalid &&
+            registerForm.get('lastName')?.touched
+          "
+        />
+        <label for="floatingLastName" class="text-shadow fw-semibold"
+          >Apellido</label
+        >
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.get('lastName')?.invalid &&
+            registerForm.get('lastName')?.touched
+          "
+        >
+          El apellido es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-floating custom-floating mb-3">
+        <input
+          id="floatingAddress"
+          class="form-control text-light"a
+          type="text"
+          formControlName="address"
+          placeholder="Dirección"
+          [class.is-invalid]="
+            registerForm.get('address')?.invalid &&
+            registerForm.get('address')?.touched
+          "
+        />
+        <label for="floatingAddress" class="text-shadow fw-semibold"
+          >Dirección</label
+        >
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            registerForm.get('address')?.invalid &&
+            registerForm.get('address')?.touched
+          "
+        >
+          La dirección es obligatoria.
+        </div>
+      </div>
+
+      <div class="mb-0">
+        <button
+          type="submit"
+          class="btn btn-md p-3 btn-primary-container border border-primary text-white w-100"
+        >
+          Finalizar registro
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

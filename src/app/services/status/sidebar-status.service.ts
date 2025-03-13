@@ -10,6 +10,8 @@ export class SidebarStatusService {
   sidebarStatus$: Observable<boolean> = this.sidebarStatusSubject.asObservable();
 
   changeStatus(status: boolean): void {
-    this.sidebarStatusSubject.next(status);
+    if (this.sidebarStatusSubject.value !== status) {
+      this.sidebarStatusSubject.next(status);
+    }
   }
 }

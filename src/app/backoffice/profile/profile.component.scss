@@ -1,86 +1,57 @@
 #profile-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 10px;
-    min-height: calc(100dvh - 130px);
+    margin-top: 15px;
 }
 
-#profile-cover-container {
-    overflow: hidden;
-    height: 40%;
-}
+#profile-header-container {
+    height: 60dvh;
+    top: 15px;
+    z-index: 0;
 
-.background-img {
-    height: 150%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-#profile-photo-container {
-    width: 100%;
-    position: relative;
-    height: 30%;
-
-    .profile-img {
-        height: 100%;
-        position: absolute;
-        bottom: 50%;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 50%;
+    #profile-cover-container {
         overflow: hidden;
-        border: 5px solid var(--bs-light-container);
-    }
+        height: 50%;
 
-    #profile-name-container {
-        position: absolute;
-        height: 40%;
-        width: 90%;
-        bottom: 10%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-}
-
-#profile-data-container {
-    display: flex;
-    flex-direction: column;
-    height: 30%;
-}
-
-#profile-body-container {
-    nav {
-        height: 40px;
-        cursor: pointer;
-
-        a {
-            text-decoration: none;
-
-            &:hover {
-                background-color: var(--bs-primary-inactive);
-            }
-
-            &.active {
-                background-color: var(--bs-primary);
-                border: none;
-                color: white !important;
-
-                &:hover {
-                    background-color: var(--bs-primary);
-                }
-            }
+        .background-img {
+            height: 150%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
         }
     }
 
-    #profile-body-content {
-        height: calc(100% - 40px);
+    #profile-data-container {
+        height: 50%;
+
+        #profile-photo-container {
+            position: relative;
+            height: 40%;
+
+            .profile-img {
+                height: 200%;
+                position: absolute;
+                bottom: 10%;
+                transform: translateX(-50%);
+                border-radius: 50%;
+                overflow: hidden;
+                border: 5px solid var(--bs-dark-secondary);
+            }
+        }
+
+        #profile-name-container {
+            height: 60%;
+        }
     }
 }
 
-@media (max-width: 1099px) {
-    #profile-container{
-        grid-template-columns: 1fr;
+#profile-body-container {
+    .hoverable:hover {
+        background-color: var(--bs-btn-hover) !important;
     }
+}
 
+@media (max-width: 1240px) {
+
+    #profile-header-container {
+        height: 350px;
+    }
 }

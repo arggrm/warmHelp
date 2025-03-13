@@ -6,8 +6,8 @@
     }
 }
 
-.sidebar-container{
-    z-index: 10;
+.sidebar-container {
+    z-index: 210;
 }
 
 #logo-container {
@@ -44,15 +44,24 @@
 
 ul {
     position: relative;
-
 }
 
 li {
     list-style-type: none;
 }
 
+li:hover {
+    i {
+        color: var(--bs-primary) !important;
+    }
+}
+
 .hoverable:hover {
     background-color: var(--bs-sidebar-hover);
+    
+    span {
+        color: var(--bs-primary) !important;
+    }
 }
 
 .items-menu {

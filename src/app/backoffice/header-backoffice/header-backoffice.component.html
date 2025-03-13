@@ -8,7 +8,7 @@
           (click)="toggleLogo()"
           [class.bg-primary]="isActiveToggle"
           [class.text-dark]="isActiveToggle"
-          [class.text-primary]="!isActiveToggle"
+          [class.text-icon-inactive]="!isActiveToggle"
           [class.hoverable]="!isActiveToggle"
           onkeydown=""
         ></i>
@@ -22,16 +22,16 @@
       </div>
 
       <!--Barra búsqueda-->
-      <div id="search-container" class="input-group">
+      <div id="search-container" class="input-group border border-1 border-light-border rounded-5">
         <input
-          id="search-input"
-          type="text"
-          placeholder="Buscar..."
-          class="form-control bg-light-container rounded-start-5"
+        id="search-input"
+        type="text"
+        placeholder="Buscar..."
+        class="form-control bg-dark border-0 rounded-start-5"
         />
-        <button class="btn btn-primary rounded-end-5" type="button">
-          <i class="bi bi-search text-light-container fs-6"></i>
-        </button>
+        <span class="input-group-text bg-dark rounded-end-5">
+          <i class="bi bi-search text-icon-inactive"></i>
+        </span>
       </div>
     </div>
 
@@ -48,43 +48,40 @@
         <i
           class="bi bi-bell-fill fs-4"
           (click)="toggleItem('isActiveNotification')"
-          onkeydown=""
+          (keydown)="toggleItem('isActiveNotification')"
         ></i>
         <span
-          class="position-absolute fw-semibold rounded-circle small d-flex align-items-center justify-content-center bg-violet-graphics text-white"
-          >5</span
+          class="position-absolute fw-semibold rounded-circle small d-flex align-items-center justify-content-center bg-violet-border text-white"
+          ></span
         >
-        <app-tab-notification
-          *ngIf="isActiveItems.isActiveNotification"
-        ></app-tab-notification>
-      </div>
-      <!--Menú Cuadrado-->
-      <div id="menu-icon-container" class="icon-container position-relative">
-        <i class="bi bi-grid-3x3-gap-fill fs-4"></i>
+        <ng-container *ngIf="isActiveItems.isActiveNotification">
+          <app-tab-notification></app-tab-notification>
+        </ng-container>
       </div>
       <!--Ajustes-->
       <div id="settings-icon-container" class="icon-container">
         <i
           class="bi bi-gear-fill fs-4"
           (click)="toggleItem('isActiveSettings')"
-          onkeydown=""
+          (keydown)="toggleItem('isActiveSettings')"
         ></i>
       </div>
-
       <!-- Perfil -->
       <div
         id="profile-icon-container"
         class="icon-container position-relative rounded-circle d-flex align-items-center justify-content-center"
         (click)="toggleItem('isActiveProfile')"
-        onkeydown=""
+        (keydown)="toggleItem('isActiveProfile')"
       >
         <img src="profile.jpg" alt="profile" class="profile-img" />
         <span class="rounded-circle bg-success position-absolute"></span>
-        <app-tab-profile
-          *ngIf="isActiveItems.isActiveProfile"
-        ></app-tab-profile>
+        <ng-container *ngIf="isActiveItems.isActiveProfile">
+          <app-tab-profile></app-tab-profile>
+        </ng-container>
       </div>
     </div>
   </header>
-  <app-tab-settings *ngIf="isActiveItems.isActiveSettings"></app-tab-settings>
+  <ng-container *ngIf="isActiveItems.isActiveSettings">
+    <app-tab-settings></app-tab-settings>
+  </ng-container>
 </div>

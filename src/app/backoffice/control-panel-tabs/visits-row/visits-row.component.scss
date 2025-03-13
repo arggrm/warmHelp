@@ -31,3 +31,12 @@
   }
 }
 
+.stroke-success {
+  color: var(--bs-success-container);
+  text-shadow:  
+        -.5px -.5px 0 var(--bs-success),  
+         .5px -.5px 0 var(--bs-success),  
+        -.5px  .5px 0 var(--bs-success),  
+         .5px  .5px 0 var(--bs-success); /* Contorno negro */
+}
+

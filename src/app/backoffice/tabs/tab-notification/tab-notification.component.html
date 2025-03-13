@@ -1,22 +1,23 @@
 <div
-  class="notification-container slide-down-in position-absolute bg-light-container shadow-lg rounded-3"
+  class="notification-container slide-down-in position-absolute bg-dark-secondary shadow-lg rounded-3"
 >
   <div
-    class="d-flex flex-row align-items-center justify-content-between px-3 pt-3 pb-2 border border-top-0 border-end-0 border-start-0 mb-2"
+    class="d-flex flex-row align-items-center justify-content-between px-3 pt-3 pb-2 mb-2"
   >
-    <p class="mb-0 h6 text-primary fw-bold">Notifications</p>
-    <p class="mb-0 text-danger">Borrar</p>
+    <span class="text-shadow fw-semibold">Notificaciones</span>
+    <span class="text-title-sidebar fw-light small hover-color">Limpiar</span>
   </div>
+  <hr class="text-border-shadow m-0" />
 
   <!-- Contenedor de los mensajes -->
-  <div class="message-container">
+  <div class="message-container p-2">
     <div class="item-message m-auto position-relative">
-      <p class="m-0 text-muted position-absolute date-item">14:00pm</p>
+      <p class="m-0 text-shadow position-absolute date-item">14:00pm</p>
       <div class="content-item">
-        <h2 class="h6 mb-1 text-end">Nueva subscripción creada</h2>
-        <p class="mb-0 text-muted small text-end">
-          {{ "Nueva subscripción creada" | truncateText }}
-        </p>
+        <h6 class="mb-1 text-light text-end fw-light">Nueva subscripción creada</h6>
+        <span class="small text-shadow fw-lighter">{{
+          "Nueva subscripción creada" | truncateText
+        }}</span>
       </div>
       <div
         class="icon-item d-flex align-items-center justify-content-center bg-info"
@@ -25,8 +26,8 @@
       </div>
     </div>
   </div>
-
-  <div class="pb-2 border-top mt-3 pt-1">
-    <p class="mb-0 text-center text-muted small">Leer todos</p>
+  <hr class="text-border-shadow m-0" />
+  <div class="text-center pt-1 pb-2">
+    <span class="text-shadow small hover-underline">Leer todos</span>
   </div>
 </div>

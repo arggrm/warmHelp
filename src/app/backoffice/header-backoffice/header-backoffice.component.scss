@@ -1,5 +1,6 @@
 .hoverable:hover {
     background-color: var(--bs-sidebar);
+    color: var(--bs-primary) !important;
 }
 
 header {
@@ -7,24 +8,30 @@ header {
     user-select: none;
 }
 
+#search-container{
+    ::placeholder {
+        color: var(--bs-shadow);
+        font-weight: 300;
+    }
+}
+
 #logo-container {
     display: none;
 }
 
-#search-container {
-    width: 250px;
-}
+.input-group-text {
+    border: none !important;
 
-#search-input::placeholder {
-    color: var(--bs-border-shadow);
-    font-style: italic;
+    i {
+        font-size: 1rem;
+    }
 }
 
 #profile-icon-container {
     width: 35px;
     height: 35px;
     cursor: pointer;
-    border: 2px solid #f9471b78;
+    border: 2px solid var(--bs-icon-inactive);
 
     span {
         width: 15px;
@@ -49,18 +56,17 @@ header {
 
 #notification-icon-container {
     span {
-        width: 18px;
-        height: 18px;
+        width: 15px;
+        height: 15px;
         z-index: 3;
-        right: -6px;
-        top: -3px;
-        font-size: 12px;
+        right: -5px;
+        top: 0px;
     }
 }
 
 i {
     cursor: pointer;
-    color: #f9471bbf;
+    color: var(--bs-icon-inactive);
 }
 
 .icon-container:hover {
@@ -82,17 +88,24 @@ i {
         #search-container {
             justify-content: flex-end;
             width: auto;
+            border: none !important;
 
             input {
                 display: none;
             }
 
-            button {
-                background-color: var(--bs-dark);
-                border: none;
+            .input-group-text {
+                background-color: var(--bs-dark) !important;
 
                 i {
-                    color: var(--bs-primary) !important;
+                    font-size: 1.4rem;
+                    color: var(--bs-icon-inactive) !important;
+                }
+
+                &:hover {
+                    i {
+                        color: var(--bs-primary) !important;
+                    }
                 }
             }
         }
