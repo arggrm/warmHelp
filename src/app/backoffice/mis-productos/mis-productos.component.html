@@ -1,19 +1,235 @@
-<div class="py-5 px-3">
+<div id="principal-container" class="container py-5 px-3">
   <div class="w-100 mb-3 pb-2">
-    <h2 class="mb-0 text-center text-primary-header">Mis productos</h2>
+    <h2 class="mb-0 text-center text-primary-header fw-semibold display-4">Mis productos</h2>
   </div>
-  <div id="create-product-row" class="w-100 mb-3 pb-2 d-flex justify-content-end">
+  <div
+    id="create-product-row"
+    class="bg-dark w-100 mb-3 p-3 d-flex border border-light-border rounded-3"
+  >
     <button
       class="btn btn-md py-2 px-4 btn-primary-container border border-primary text-white d-flex align-items-center"
+      (click)="toggleItem('isActiveToggleCreateProduct')"
     >
       <i class="bi bi-plus-circle me-2"></i>
-      Añadir producto
+      Nuevo producto
     </button>
   </div>
   <div
     id="information-container"
-    class="bg-dark-secondary border border-light-border rounded-3 p-3 mx-auto"
+    class="bg-dark-secondary border border-light-border rounded-3 mx-auto"
   >
-    
+    <div class="table-responsive rounded-3">
+      <table class="table table-hover mb-0 align-middle">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="text-uppercase text-shadow">Nombre</th>
+            <th class="text-uppercase text-shadow">Imagen</th>
+            <th class="text-uppercase text-shadow">Moneda</th>
+            <th class="text-uppercase text-shadow">Precio</th>
+            <th class="text-uppercase text-shadow">Impuesto</th>
+            <th class="text-uppercase text-shadow">Descripción</th>
+            <th class="text-uppercase text-shadow">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td><span class="fw-semibold">Amatista</span></td>
+            <td>
+              <img
+                src="images/products/amatista-thumbnail.jpg"
+                alt="Amatista"
+                class="img-fluid"
+              />
+            </td>
+            <td>EUR</td>
+            <td><span class="fw-normal">100</span></td>
+            <td><span class="fw-normal">10</span></td>
+            <td>
+              <span class="fw-normal"
+                >La amatista es una variedad de cuarzo morado muy apreciada en
+                joyería.</span
+              >
+            </td>
+            <td>
+              <div class="d-flex flex-wrap gap-2">
+                <button
+                  class="col btn btn-btn-inactive border border-light-border btn-sm"
+                  (click)="toggleItem('isActiveToggleEditProduct')"
+                >
+                  Editar
+                </button>
+                <button
+                  class="col btn btn-danger-container border border-danger btn-sm"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td><span class="fw-semibold">Cuarzo Rosa</span></td>
+            <td>
+              <img
+                src="images/products/cuarzo-rosa-thumbnail.jpg"
+                alt="Cuarzo Rosa"
+                class="img-fluid"
+              />
+            </td>
+            <td>USD</td>
+            <td><span class="fw-normal">120</span></td>
+            <td><span class="fw-normal">12</span></td>
+            <td>
+              <span class="fw-normal"
+                >El cuarzo rosa es conocido por ser una piedra de amor y
+                armonía.</span
+              >
+            </td>
+            <td>
+              <div class="d-flex flex-wrap gap-2">
+                <button
+                  class="col btn btn-btn-inactive border border-light-border btn-sm"
+                  (click)="toggleItem('isActiveToggleEditProduct')"
+                >
+                  Editar
+                </button>
+                <button
+                  class="col btn btn-danger-container border border-danger btn-sm"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td><span class="fw-semibold">Citrino</span></td>
+            <td>
+              <img
+                src="images/products/citrino-thumbnail.jpg"
+                alt="Citrino"
+                class="img-fluid"
+              />
+            </td>
+            <td>EUR</td>
+            <td><span class="fw-normal">80</span></td>
+            <td><span class="fw-normal">8</span></td>
+            <td>
+              <span class="fw-normal"
+                >El citrino es conocido por sus propiedades energéticas y su
+                color amarillo brillante.</span
+              >
+            </td>
+            <td>
+              <div class="d-flex flex-wrap gap-2">
+                <button
+                  class="col btn btn-btn-inactive border border-light-border btn-sm"
+                  (click)="toggleItem('isActiveToggleEditProduct')"
+                >
+                  Editar
+                </button>
+                <button
+                  class="col btn btn-danger-container border border-danger btn-sm"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td><span class="fw-semibold">Jade</span></td>
+            <td>
+              <img
+                src="images/products/jade-thumbnail.jpg"
+                alt="Jade"
+                class="img-fluid"
+              />
+            </td>
+            <td>USD</td>
+            <td><span class="fw-normal">150</span></td>
+            <td><span class="fw-normal">15</span></td>
+            <td>
+              <span class="fw-normal"
+                >El jade es muy valorado en muchas culturas como símbolo de
+                pureza y serenidad.</span
+              >
+            </td>
+            <td>
+              <div class="d-flex flex-wrap gap-2">
+                <button
+                  class="col btn btn-btn-inactive border border-light-border btn-sm"
+                  (click)="toggleItem('isActiveToggleEditProduct')"
+                >
+                  Editar
+                </button>
+                <button
+                  class="col btn btn-danger-container border border-danger btn-sm"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td><span class="fw-semibold">Turquesa</span></td>
+            <td>
+              <img
+                src="images/products/turquesa-thumbnail.jpg"
+                alt="Turquesa"
+                class="img-fluid"
+              />
+            </td>
+            <td>EUR</td>
+            <td><span class="fw-normal">90</span></td>
+            <td><span class="fw-normal">9</span></td>
+            <td>
+              <span class="fw-normal"
+                >La turquesa es conocida por su color vibrante y propiedades
+                protectoras.</span
+              >
+            </td>
+            <td>
+              <div class="d-flex flex-wrap gap-2">
+                <button
+                  class="col btn btn-btn-inactive border border-light-border btn-sm"
+                  (click)="toggleItem('isActiveToggleEditProduct')"
+                >
+                  Editar
+                </button>
+                <button
+                  class="col btn btn-danger-container border border-danger btn-sm"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>
+
+<div
+  *ngIf="isActiveItems.isActiveToggleEditProduct"
+  class="modal-overlay"
+  onKeyDown=""
+>
+  <app-editar-producto
+    *ngIf="isActiveItems.isActiveToggleEditProduct"
+  ></app-editar-producto>
+</div>
+
+<div
+  *ngIf="isActiveItems.isActiveToggleCreateProduct"
+  class="modal-overlay"
+  onKeyDown=""
+>
+  <app-crear-producto
+    *ngIf="isActiveItems.isActiveToggleCreateProduct"
+  ></app-crear-producto>
 </div>

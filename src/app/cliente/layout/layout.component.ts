@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {HeaderClienteComponent} from '../header-cliente/header-cliente.component';
-import {RouterOutlet} from '@angular/router';
+import { HeaderClienteComponent } from '../header-cliente/header-cliente.component';
+import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from "../../footer/footer.component";
 
 @Component({
@@ -8,8 +8,8 @@ import { FooterComponent } from "../../footer/footer.component";
   imports: [
     HeaderClienteComponent,
     RouterOutlet,
-    FooterComponent
-],
+    FooterComponent,
+  ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })

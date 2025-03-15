@@ -1,0 +1,54 @@
+#edit-container {
+    width: 450px;
+    max-height: calc(100dvh - 50px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        background-color: none;
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: none;
+        border-radius: 5px;
+    }
+
+    &:hover {
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--bs-primary-scrollbar-inactive);
+
+            &:hover {
+                background-color: var(--bs-primary-scrollbar);
+            }
+        }
+    }
+}
+
+.hoverable:hover {
+    background-color: var(--bs-btn-hover) !important;
+}
+
+.custom-floating {
+    input {
+        border-color: var(--bs-light-border);
+        background-color: var(--bs-dark-secondary);
+    }
+
+    input:hover+label::after,
+    textarea:hover+label::after,
+    input:hover,
+    textarea:hover {
+        background-color: var(--bs-btn-hover) !important;
+    }
+
+    textarea {
+        border-color: var(--bs-light-border);
+        background-color: var(--bs-dark-secondary);
+        min-height: 120px;
+    }
+
+    label::after {
+        background-color: var(--bs-dark-secondary);
+    }
+}

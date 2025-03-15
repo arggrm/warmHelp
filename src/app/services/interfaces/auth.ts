@@ -13,4 +13,9 @@ export interface UserInterface {
     address: string;
 }
 
+export interface MiPerfilStatus {
+  isActiveToggleEditProfile: boolean;
+  isActiveToggleChangePassword: boolean;
+}
+
 export type LoginInterface = Pick<UserInterface, "username" | "password">;

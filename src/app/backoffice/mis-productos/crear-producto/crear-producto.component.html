@@ -1,0 +1,162 @@
+<div id="edit-container" class="bg-dark slide-down-in rounded-3 p-3">
+  <div class="py-3 mb-2 text-center">
+    <span class="fw-semibold text-primary display-6">Crear producto</span>
+  </div>
+  <form method="post" [formGroup]="createForm" (ngSubmit)="submit()">
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="text"
+        class="form-control text-light fw-lighter"
+        id="floatingName"
+        placeholder="Nombre"
+        formControlName="name"
+        [class.is-invalid]="
+          createForm.get('name')?.invalid && createForm.get('name')?.touched
+        "
+      />
+      <label for="floatingName" class="fw-semibold text-shadow">Nombre</label>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          createForm.get('name')?.invalid && createForm.get('name')?.touched
+        "
+      >
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="text"
+        class="form-control text-light fw-lighter"
+        id="floatingImage"
+        placeholder="Image URL"
+        formControlName="image"
+        [class.is-invalid]="
+          createForm.get('image')?.invalid && createForm.get('image')?.touched
+        "
+      />
+      <label for="floatingImage" class="fw-semibold text-shadow"
+        >URL de Imagen</label
+      >
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          createForm.get('image')?.invalid && createForm.get('image')?.touched
+        "
+      >
+        La URL de la imagen es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="text"
+        class="form-control text-light fw-lighter"
+        id="floatingCurrency"
+        placeholder="Currency"
+        formControlName="currency"
+        [class.is-invalid]="
+          createForm.get('currency')?.invalid &&
+          createForm.get('currency')?.touched
+        "
+      />
+      <label for="floatingCurrency" class="fw-semibold text-shadow"
+        >Moneda</label
+      >
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          createForm.get('currency')?.invalid &&
+          createForm.get('currency')?.touched
+        "
+      >
+        La moneda es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="number"
+        class="form-control text-light fw-lighter"
+        id="floatingPrice"
+        placeholder="Price"
+        formControlName="price"
+        [class.is-invalid]="
+          createForm.get('price')?.invalid && createForm.get('price')?.touched
+        "
+      />
+      <label for="floatingPrice" class="fw-semibold text-shadow">Precio</label>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          createForm.get('price')?.invalid && createForm.get('price')?.touched
+        "
+      >
+        El precio es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="number"
+        class="form-control text-light fw-lighter"
+        id="floatingTax"
+        placeholder="Tax"
+        formControlName="tax"
+        [class.is-invalid]="
+          createForm.get('tax')?.invalid && createForm.get('tax')?.touched
+        "
+      />
+      <label for="floatingTax" class="fw-semibold text-shadow">Impuesto</label>
+      <div
+        class="invalid-feedback"
+        *ngIf="createForm.get('tax')?.invalid && createForm.get('tax')?.touched"
+      >
+        El impuesto es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <textarea
+        class="form-control text-light fw-lighter"
+        id="floatingDescription"
+        placeholder="Description"
+        formControlName="description"
+        rows="3"
+        [class.is-invalid]="
+          createForm.get('description')?.invalid &&
+          createForm.get('description')?.touched
+        "
+      ></textarea>
+      <label for="floatingDescription" class="fw-semibold text-shadow"
+        >Descripción</label
+      >
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          createForm.get('description')?.invalid &&
+          createForm.get('description')?.touched
+        "
+      >
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <div class="mb-0 d-flex flex-column gap-2">
+      <button
+        type="submit"
+        class="btn btn-md p-3 btn-primary-container border border-primary text-white w-100"
+        [disabled]="createForm.invalid"
+      >
+        Guardar cambios
+      </button>
+      <button
+        class="btn btn-md p-3 btn-btn-inactive hoverable border border-light-border text-shadow w-100"
+        (click)="toggleCreateProducts()"
+      >
+        Regresar
+      </button>
+    </div>
+  </form>
+</div>

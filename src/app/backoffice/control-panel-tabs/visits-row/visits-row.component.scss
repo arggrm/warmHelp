@@ -40,3 +40,6 @@
          .5px  .5px 0 var(--bs-success); /* Contorno negro */
 }
 
+.hoverable:hover {
+  background-color: var(--bs-hover);
+}

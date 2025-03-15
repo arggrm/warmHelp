@@ -8,20 +8,18 @@ import { LoginComponent } from './cliente/login/login.component';
 import { RegistroComponent } from './cliente/registro/registro.component';
 import { TiendaComponent } from './cliente/tienda/tienda.component';
 import { ControlPanelComponent } from './backoffice/control-panel/control-panel.component';
-import { ProfileComponent } from './backoffice/profile/profile.component';
-import { EditProfileComponent } from './backoffice/edit-profile/edit-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { authGuard } from './services/guards/auth.guard';
 import { publicGuard } from './services/guards/public.guard';
-import { SuccessRegisterComponent } from './cliente/success-register/success-register.component';
 import { MisProductosComponent } from './backoffice/mis-productos/mis-productos.component';
+import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 
 // Rutas de Cliente
 const clientRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent, canActivate: [publicGuard] },
   { path: "register", component: RegistroComponent, canActivate: [publicGuard] },
-  { path: "success-register", component: SuccessRegisterComponent },
+  { path: "my-profile", component: MiPerfilComponent },
   { path: "tienda", component: TiendaComponent },
 ];
 
@@ -29,8 +27,7 @@ const clientRoutes: Routes = [
 const backofficeRoutes: Routes = [
   { path: "", redirectTo: "control-panel", pathMatch: "full" },
   { path: "control-panel", component: ControlPanelComponent },
-  { path: "profile", component: ProfileComponent },
-  { path: "edit-profile", component: EditProfileComponent },
+  { path: "my-profile", component: MiPerfilComponent },
   { path: "my-products", component: MisProductosComponent },
 ];
 

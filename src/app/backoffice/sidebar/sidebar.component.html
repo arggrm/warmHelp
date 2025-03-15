@@ -1,17 +1,27 @@
 <div class="d-flex flex-column text-white h-100 w-100">
   <div id="sidebar-container" class="d-flex flex-column w-100 overflow-auto">
     <!--Logo-->
-    <div id="logo-container" class="d-flex align-items-end justify-content-center bg-sidebar pb-3">
+    <div
+      id="logo-container"
+      class="d-flex align-items-end justify-content-center bg-sidebar pb-3"
+    >
       <a [routerLink]="['/app']" class="text-decoration-none">
-        <img *ngIf="!isActiveSidebar" src="logo-simple.svg" alt="Logo" height="25" />
+        <img
+          *ngIf="!isActiveSidebar"
+          src="logo-simple.svg"
+          alt="Logo"
+          height="25"
+        />
         <img *ngIf="isActiveSidebar" src="logo.svg" alt="Logo" height="30" />
       </a>
     </div>
-    
+
     <div id="toggle-icon-container">
       <ul class="p-0 w-100" [class.px-3]="isActiveSidebar">
         <li class="px-2 py-1" *ngIf="isActiveSidebar">
-          <span class="text-title-sidebar text-uppercase fw-bold titulo-menu p-0">
+          <span
+            class="text-title-sidebar text-uppercase fw-bold titulo-menu p-0"
+          >
             menu
           </span>
         </li>
@@ -25,12 +35,14 @@
             [class.px-3]="isActiveSidebar"
             [class.py-1]="isActiveSidebar"
           >
+            <!-- Verifica si 'item.path' está definido, si es así, se renderiza el enlace -->
             <a
+              *ngIf="item.path; else noLink"
               class="text-white text-decoration-none d-flex align-items-center"
-              href="{{ item.path }}"
+              [href]="item.path"
               [class.p-2]="!isActiveSidebar"
               [class.justify-content-center]="!isActiveSidebar"
-              (click)="item.click ? item.click() : null"
+              (click)="($any(item)).click ? ($any(item)).click() : null"
             >
               <i
                 class="bi {{ item.icono }} text-icon-inactive fs-5"
@@ -43,18 +55,41 @@
                 {{ item.nombre }}
               </span>
             </a>
+
+            <ng-template #noLink>
+              <div
+                class="text-white text-decoration-none d-flex align-items-center"
+                [class.p-2]="!isActiveSidebar"
+                [class.justify-content-center]="!isActiveSidebar"
+                (click)="($any(item)).click ? ($any(item)).click() : null"
+                onkeydown = ""
+              >
+                <i
+                  class="bi {{ item.icono }} text-icon-inactive fs-5"
+                  [class.pe-2]="isActiveSidebar"
+                ></i>
+                <span
+                  class="items-menu-span text-white fw-lighter"
+                  [class.collapsed]="!isActiveSidebar"
+                >
+                  {{ item.nombre }}
+                </span>
+              </div>
+            </ng-template>
           </li>
         </div>
-  
+
         <hr class="text-icon-inactive my-2" />
 
         <!-- Opciones Redes Sociales -->
         <li class="px-2 py-1" *ngIf="isActiveSidebar">
-          <span class="text-title-sidebar text-uppercase fw-bold titulo-menu p-0">
+          <span
+            class="text-title-sidebar text-uppercase fw-bold titulo-menu p-0"
+          >
             redes sociales
           </span>
         </li>
-        
+
         <div class="opciones">
           <li
             *ngFor="let item of socialMediaList"

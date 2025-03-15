@@ -1,53 +1,57 @@
-<div class="auth-container d-flex flex-column justify-content-center m-auto py-5 px-3">
+<div
+  class="auth-container d-flex flex-column justify-content-center m-auto py-5 px-3"
+>
   <div class="mb-4 w-100">
-    <h1 class="mb-0 text-center text-primary-header fw-semibold">Iniciar sesión</h1>
+    <h1 class="mb-0 text-center text-primary-header fw-semibold display-4">
+      Iniciar sesión
+    </h1>
   </div>
-  <form method="post" [formGroup]="loginForm" (ngSubmit)="submit()">
+  <div class="bg-dark border border-light-border rounded-3 p-3">
+    <form method="post" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="form-floating custom-floating mb-3">
+        <input
+          id="floatingUsername"
+          class="form-control border-light-border text-light"
+          type="text"
+          formControlName="username"
+          placeholder="Usuario"
+        />
+        <label for="floatingUsername" class="text-shadow fw-semibold"
+          >Usuario</label
+        >
+      </div>
 
-    <div class="form-floating custom-floating mb-3">
-      <input
-        id="floatingUsername"
-        class="form-control border-light-border text-light"
-        type="text"
-        formControlName="username"
-        placeholder="Usuario"
-      />
-      <label for="floatingUsername" class="text-shadow fw-semibold"
-        >Usuario</label
-      >
-    </div>
+      <div class="form-floating custom-floating mb-3">
+        <input
+          id="floatingPassword"
+          class="form-control border-light-border text-light"
+          type="password"
+          formControlName="password"
+          placeholder="Contraseña"
+        />
+        <label
+          for="floatingPassword"
+          class="fw-semibold text-shadow"
+          for="floatingPassword"
+          >Contraseña</label
+        >
+      </div>
 
-    <div class="form-floating custom-floating mb-3">
-      <input
-        id="floatingPassword"
-        class="form-control border-light-border text-light"
-        type="password"
-        formControlName="password"
-        placeholder="Contraseña"
-      />
-      <label
-        for="floatingPassword"
-        class="fw-semibold text-shadow"
-        for="password"
-        >Contraseña</label
-      >
-    </div>
-
-    <div class="mb-0">
-      <button
-        type="submit"
-        class="btn btn-md p-3 btn-primary-container border border-primary text-white w-100"
-        [disabled]="loginForm.invalid"
-      >
-        Entrar
-      </button>
-    </div>
-    <hr class="my-3" />
-    <div class="w-100 text-center mt-3 text-shadow">
-      <span>¿No tienes cuenta?</span>
-      <a class="text-decoration-none text-link ms-1" [routerLink]="['/register']">
-        Regístrate
-      </a>
-    </div>
-  </form>
+      <div class="mb-0">
+        <button
+          type="submit"
+          class="btn btn-md p-3 btn-primary-container border border-primary text-white w-100"
+          [disabled]="loginForm.invalid"
+        >
+          Entrar
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="w-100 text-center mt-3 text-shadow">
+    <span>¿No tienes cuenta?</span>
+    <a class="text-decoration-none text-link ms-1" [routerLink]="['/register']">
+      Regístrate
+    </a>
+  </div>
 </div>

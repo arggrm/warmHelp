@@ -1,0 +1,31 @@
+<div
+  class="notification-container slide-down-in position-absolute bg-dark-secondary shadow-lg rounded-3"
+>
+  <div
+    class="message-container d-flex flex-column justify-content-center h-100"
+  >
+    <ul class="list-unstyled d-flex flex-column justify-content-around m-0">
+      <li class="p-0 items-menu hoverable px-3">
+        <a
+          class="text-white text-decoration-none d-flex align-items-center"
+          (click)="goToProfile()"
+        >
+          <i class="bi bi-person-fill text-i-secondary pe-2"></i>
+          <span class="items-menu-span text-light fw-lighter"> Mi perfil </span>
+        </a>
+      </li>
+
+      <li class="p-0 items-menu hoverable px-3">
+        <a
+          class="text-white text-decoration-none d-flex align-items-center"
+          (click)="logout()"
+        >
+          <i class="bi bi-door-open-fill text-i-secondary pe-2"></i>
+          <span class="items-menu-span text-light fw-lighter"
+            >Cerrar sesión</span
+          >
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

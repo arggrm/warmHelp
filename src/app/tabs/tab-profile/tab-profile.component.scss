@@ -1,0 +1,16 @@
+.notification-container {
+    top: 60px;
+    height: 120px;
+    right: 0px;
+    width: 160px;
+}
+
+.hoverable:hover {
+    background-color: var(--bs-hover);
+}
+
+li {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}

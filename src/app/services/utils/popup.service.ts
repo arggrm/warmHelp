@@ -8,17 +8,29 @@ export class PopupService {
 
   constructor() { }
 
-  showMessage(title: string, message: string,
-    icon: 'success' | 'warning' | 'error' | 'info' | 'question' = 'info'): void {
+  showMessage(
+    title: string,
+    message: string,
+    icon: 'success' | 'warning' | 'error' | 'info' | 'question' = 'info',
+  ): void {
     Swal.fire({
       title: title,
       text: message,
       icon: icon,
-      iconColor: '#8e1c00',
       background: '#0c213d',
       color: '#7a94b9',
-      confirmButtonText: "Cerrar",
+      confirmButtonText: 'Cerrar',
       confirmButtonColor: '#710400'
+    })
+  }
+
+  showSuccessRegister(): void {
+    Swal.fire({
+      title: '¡Enhorabuena!',
+      text: 'Tu cuenta ha sido creada exitosamente.',
+      icon: 'success',
+      background: '#0c213d',
+      color: '#7a94b9',
     })
   }
 

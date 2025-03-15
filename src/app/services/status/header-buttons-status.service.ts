@@ -5,6 +5,7 @@ export interface HeaderButtonStatus {
   isActiveNotification: boolean;
   isActiveSettings: boolean;
   isActiveProfile: boolean;
+  isActiveCart: boolean
 }
 
 @Injectable({
@@ -15,7 +16,8 @@ export class HeaderButtonsStatusService {
   private readonly isActiveItemsSubject = new BehaviorSubject<HeaderButtonStatus>({
     isActiveNotification: false,
     isActiveSettings: false,
-    isActiveProfile: false
+    isActiveProfile: false,
+    isActiveCart: false
   });
 
   isActiveItems$: Observable<HeaderButtonStatus> = this.isActiveItemsSubject.asObservable();

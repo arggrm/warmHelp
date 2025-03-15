@@ -1,1 +1,16 @@
-<p>page-not-found works!</p>
+<div
+  id="principal-container"
+  class="d-flex justify-content-center align-items-center"
+>
+  <div class="text-center">
+    <h1 class="display-1 text-primary fw-bold">404</h1>
+    <p class="fs-3 display-3 text-shadow">Opps! Página no encontrada.</p>
+    <a
+      routerLink="/"
+      class="btn btn-lg btn-btn-inactive border border-light-border hoverable"
+      (click)="toHomePage()"
+      >Volver a la página principal</a
+    >
+  </div>
+</div>
+<app-footer></app-footer>

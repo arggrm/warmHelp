@@ -1,37 +1,123 @@
-<div class="bg-dark">
-  <header
-    class="container d-flex align-items-center justify-content-md-between py-3"
-  >
-    <a
-      href="/"
-      class="d-flex align-items-center text-dark text-decoration-none"
-    >
-      <img src="logo.svg" alt="Logo" height="30" />
-    </a>
+<div class="bg-dark-container border-bottom border-light-border w-100">
+  <header class="container-fluid d-flex align-items-center py-3 px-5">
+    <div class="row w-100 align-items-center justify-content-between mx-auto">
+      <!-- Logo -->
+      <div class="col-auto">
+        <div id="logo-container">
+          <a
+            href="/"
+            class="d-flex align-items-center text-dark text-decoration-none"
+          >
+            <img
+              src="logo.svg"
+              alt="Logo"
+              height="30"
+              class="d-none d-md-block"
+            />
+            <img
+              src="logo-simple.svg"
+              alt="Logo"
+              height="30"
+              class="d-md-none d-block"
+            />
+          </a>
+        </div>
+      </div>
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-primary">Home</a></li>
-      <li>
-        <a href="#" class="nav-link px-2 link-primary">Features</a>
-      </li>
-      <li>
-        <a href="#" class="nav-link px-2 link-primary">Pricing</a>
-      </li>
-      <li>
-        <a href="#" class="nav-link px-2 link-primary">FAQs</a>
-      </li>
-      <li>
-        <a href="#" class="nav-link px-2 link-primary">About</a>
-      </li>
-    </ul>
+      <!-- Navegación -->
+      <div class="col-3 d-none d-md-block ps-3">
+        <div *ngIf="isLoggedIn()" id="nav-container">
+          <ul class="nav">
+            <li>
+              <a [routerLink]="['/']" class="nav-link px-2 link-primary"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a [routerLink]="['/tienda']" class="nav-link px-2 link-primary"
+                >Tienda</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
 
-    <div *ngIf="!isLoggedIn()" class="col-md-3 text-end">
-      <button type="button" class="btn btn-primary-container border border-primary text-light me-2" (click)="navigateTo('/login')">
-        Iniciar Sesión
-      </button>
-      <button type="button" class="btn btn-primary-container border border-primary text-light" (click)="navigateTo('/register')">
-        Registro
-      </button>
+      <!-- Barra de búsqueda -->
+      <div class="col d-flex justify-content-end">
+        <div
+          *ngIf="isLoggedIn()"
+          id="search-container"
+          class="input-group border border-1 border-light-border rounded-5"
+        >
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Buscar..."
+            class="form-control bg-dark border-0 rounded-start-5"
+          />
+          <span class="input-group-text bg-dark rounded-end-5">
+            <i class="bi bi-search text-icon-inactive"></i>
+          </span>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="col-auto">
+        <div
+          id="buttons-container"
+          class="d-flex justify-content-end align-items-center ms-3"
+        >
+          <div *ngIf="!isLoggedIn()">
+            <button
+              type="button"
+              class="btn btn-primary-container border border-primary text-light me-2"
+              [routerLink]="['/login']"
+            >
+              Iniciar Sesión
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary-container border border-primary text-light"
+              [routerLink]="['/register']"
+            >
+              Registro
+            </button>
+          </div>
+
+          <div *ngIf="isLoggedIn()" class="d-flex gap-4">
+            <!-- Carrito -->
+            <div id="settings-icon-container" class="icon-container">
+              <a
+                class="d-flex align-items-center text-decoration-none"
+                (click)="toggleItem('isActiveCart')"
+                (keydown)="toggleItem('isActiveCart')"
+              >
+                <i
+                  class="bi bi-cart-fill fs-4 hoverable"
+                  [class.text-primary]="isActiveItems.isActiveCart"
+                ></i>
+              </a>
+            </div>
+            <!-- Perfil -->
+            <div
+              id="profile-icon-container"
+              class="icon-container position-relative rounded-circle d-flex align-items-center justify-content-center"
+              (click)="toggleItem('isActiveProfile')"
+              (keydown)="toggleItem('isActiveProfile')"
+            >
+              <img src="profile.jpg" alt="profile" class="profile-img" />
+              <span class="rounded-circle bg-success position-absolute"></span>
+              <ng-container *ngIf="isActiveItems.isActiveProfile">
+                <app-tab-profile></app-tab-profile>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 </div>
+
+<ng-container *ngIf="isActiveItems.isActiveCart">
+  <app-carrito></app-carrito>
+</ng-container>

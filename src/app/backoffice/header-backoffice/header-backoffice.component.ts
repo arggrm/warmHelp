@@ -1,16 +1,16 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { TabNotificationComponent } from "../tabs/tab-notification/tab-notification.component";
 import { SidebarStatusService } from '../../services/status/sidebar-status.service';
-import { TabSettingsComponent } from "../tabs/tab-settings/tab-settings.component";
-import { TabProfileComponent } from "../tabs/tab-profile/tab-profile.component";
+
 import { RouterModule } from '@angular/router';
 import { HeaderButtonsStatusService, HeaderButtonStatus } from '../../services/status/header-buttons-status.service';
-
+import { TabSettingsComponent } from '../../tabs/tab-settings/tab-settings.component';
+import { TabProfileComponent } from '../../tabs/tab-profile/tab-profile.component';
+import { TabNotificationComponent } from "../../tabs/tab-notification/tab-notification.component";
 @Component({
   selector: 'app-header-backoffice',
-  imports: [NgIf, TabNotificationComponent, TabSettingsComponent, TabProfileComponent, RouterModule],
+  imports: [NgIf, RouterModule, TabNotificationComponent, TabProfileComponent, TabSettingsComponent],
   standalone: true,
   templateUrl: './header-backoffice.component.html',
   styleUrls: ['./header-backoffice.component.scss']
@@ -24,7 +24,8 @@ export class HeaderBackofficeComponent implements OnInit, OnDestroy {
   isActiveItems: HeaderButtonStatus = {
     isActiveNotification: false,
     isActiveSettings: false,
-    isActiveProfile: false
+    isActiveProfile: false,
+    isActiveCart: false
   };
 
   constructor(

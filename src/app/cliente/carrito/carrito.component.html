@@ -1,0 +1,54 @@
+<div
+  class="cart-container bg-dark position-fixed slide-right-to-left-in py-3 px-4 border border-right border-light-border shadow-lg"
+>
+  <div>
+    <div class="mb-3 w-100">
+      <h5 class="display-6 text-primary fw-semibold">Carrito</h5>
+    </div>
+
+    <div class="d-flex flex-column gap-3">
+      <div id="cart-list" class="bg-dark-secondary border border-light-border rounded-3 py-3">
+        <div *ngIf="cartItems.length === 0" class="d-flex flex-column align-items-center justify-content-center gap-2 h-100" >
+          <i class="bi bi-cart-x-fill display-4 text-shadow"></i>
+          <p class="text-center text-shadow fw-lighter">El carrito esta vacio :(</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let item of cartItems" class="py-3 ps-0 border-bottom border-light-border list-group-item bg-transparent hoverable">
+            <div class="d-flex align-items-center gap-3 px-3">
+              <!-- Imagen -->
+              <div>
+                <img [src]="item.image" [alt]="item.name" style="width: 50px; height: auto;">
+              </div>
+        
+              <!-- Información del producto -->
+              <div class="col-3">
+                <h6 class="fw-light text-light mb-1">{{ item.name | truncateText }} </h6>
+                <small class="text-shadow fw-lighter">200g</small>
+              </div>
+        
+              <!-- Selector de cantidad -->
+              <div class="d-flex align-items-center">
+                <input type="button" value="-" class="btn btn-sm btn-outline-light" (click)="updateQuantity(item, 'decrement')">
+                <input type="number" [(ngModel)]="item.quantity" name="quantity" class="form-control form-control-sm text-center mx-2" style="width: 40px;" [min]="1">
+                <input type="button" value="+" class="btn btn-sm btn-outline-light" (click)="updateQuantity(item, 'increment')">
+              </div>
+        
+              <!-- Precio -->
+              <div class="text-end">
+                <span class="fw-bold text-light">
+                  {{ item.currency }} {{ (item.price * item.quantity).toFixed(2) }}
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-dark-secondary border border-light-border rounded-3 py-3 px-4 d-flex flex-column gap-2">
+        <button type="button" class="btn btn-sm btn-primary-container border border-primary">Ir a la compra</button>
+        <button type="button" class="btn btn-sm btn-danger-container border border-danger" (click)="clearCart()">Vaciar carrito</button>
+        <button type="button" class="btn btn-sm btn-btn-inactive border border-light-border" (click)="closeCart()">Volver</button>
+      </div>
+    </div>
+  </div>
+</div>

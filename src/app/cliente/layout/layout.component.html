@@ -1,4 +1,11 @@
-
-<app-header-cliente></app-header-cliente>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div id="web-container">
+  <div id="content-container" class="d-flex flex-column overflow-auto">
+    <div id="header-container" class="sticky-top">
+      <app-header-cliente></app-header-cliente>
+    </div>
+    <div id="main-container">
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

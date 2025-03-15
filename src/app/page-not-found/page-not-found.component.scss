@@ -1,0 +1,7 @@
+#principal-container{
+    min-height: calc(100dvh - 70px);
+}
+
+.hoverable:hover {
+    background-color: var(--bs-btn-hover) !important;
+}

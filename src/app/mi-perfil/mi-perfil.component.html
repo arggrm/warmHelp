@@ -1,0 +1,174 @@
+<div id="profile-container" class="container py-5 px-3">
+  <!-- Perfil Header -->
+
+  <div class="w-100 mb-3 pb-2">
+    <h2 class="mb-0 text-center text-primary-header fw-semibold display-4">
+      Mi perfil
+    </h2>
+  </div>
+
+  <div class="row gy-3">
+    <div class="col-12 col-lg-4">
+      <div
+        id="profile-header-container"
+        class="rounded-5 border border-light-border bg-dark sticky-top"
+      >
+        <!-- Perfil Cover -->
+        <div id="profile-cover-container" class="rounded-top-5 h-50">
+          <img
+            src="profile-background.jpg"
+            alt="profile-background"
+            class="background-img"
+          />
+        </div>
+
+        <!-- Perfil Data -->
+        <div id="profile-data-container" class="w-100">
+          <div
+            id="profile-photo-container"
+            class="d-flex flex-column justify-content-center align-items-center"
+          >
+            <div class="profile-img-wrapper">
+              <img src="profile.jpg" alt="profile" class="profile-img" />
+            </div>
+          </div>
+
+          <div
+            id="profile-name-container"
+            class="d-flex flex-column align-items-center"
+          >
+            <h4 class="text-light fw-bolder">Nick Rodríguez</h4>
+            <span class="text-shadow fw-lighter">desde 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perfil Body Nav -->
+    <div class="col-12 col-lg-8">
+      <div id="profile-body-container" class="d-flex flex-column gap-3">
+        <!-- Información del perfil -->
+        <div
+          id="information-container"
+          class="bg-dark border border-light-border rounded-3 py-3"
+        >
+          <div class="px-3 pb-2">
+            <span class="text-shadow fw-bold fs-5">Información</span>
+          </div>
+
+          <div class="row hoverable m-0">
+            <div
+              class="col-4 d-flex align-items-center justify-content-end text-shadow fw-semibold fs-6"
+            >
+              <span>Usuario</span>
+            </div>
+            <div
+              class="col d-flex align-items-center text-light rounded-end-3 p-3"
+            >
+              <i class="bi bi-at me-2"></i>
+              <span class="fw-light">nick_rod</span>
+            </div>
+          </div>
+
+          <hr class="text-light-border m-0" />
+
+          <div class="row hoverable m-0">
+            <div
+              class="col-4 d-flex align-items-center justify-content-end text-shadow fw-semibold fs-6"
+            >
+              <span>Email</span>
+            </div>
+            <div
+              class="col d-flex align-items-center text-light rounded-end-3 p-3"
+            >
+              <i class="bi bi-envelope-fill me-2"></i>
+              <span class="fw-light">nick_rodriguez&#64;warmhelp.com</span>
+            </div>
+          </div>
+
+          <hr class="text-light-border m-0" />
+
+          <div class="row hoverable m-0">
+            <div
+              class="col-4 d-flex align-items-center justify-content-end text-shadow fw-semibold fs-6"
+            >
+              <span>Teléfono</span>
+            </div>
+            <div
+              class="col d-flex align-items-center text-light rounded-end-3 p-3"
+            >
+              <i class="bi bi-telephone-fill me-2"></i>
+              <span class="fw-light">6665859</span>
+            </div>
+          </div>
+
+          <hr class="text-light-border m-0" />
+
+          <div class="row hoverable m-0">
+            <div
+              class="col-4 d-flex align-items-center justify-content-end text-shadow fw-semibold fs-6"
+            >
+              <span>Dirección</span>
+            </div>
+            <div
+              class="col d-flex align-items-center text-light rounded-end-3 p-3"
+            >
+              <i class="bi bi-house-fill me-2"></i>
+              <span class="fw-light">Calle de la Palma, 12</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opciones -->
+        <div
+          id="options-container"
+          class="bg-dark border border-light-border rounded-3 p-3"
+        >
+          <div class="pb-3">
+            <span class="text-shadow fw-bold fs-5">Opciones</span>
+          </div>
+          <div class="row gy-2">
+            <div class="w-100">
+              <a>
+                <button
+                  class="hoverable btn btn-btn-inactive border border-light-border text-shadow py-2 w-100"
+                  (click)="toggleItem('isActiveToggleEditProfile')"
+                >
+                  Editar perfil
+                </button>
+              </a>
+            </div>
+
+            <div class="w-100">
+              <a>
+                <button
+                  class="hoverable btn btn-btn-inactive border border-light-border text-shadow py-2 w-100"
+                  (click)="toggleItem('isActiveToggleChangePassword')"
+                >
+                  Cambiar contraseña
+                </button>
+              </a>
+            </div>
+            <div class="w-100">
+              <a>
+                <button
+                  class="btn btn-danger-container border border-danger text-white py-2 w-100"
+                >
+                  Borrar cuenta
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isActiveItems.isActiveToggleEditProfile" class="modal-overlay" onKeyDown="">
+  <app-edit-profile></app-edit-profile>
+</div>
+
+<div *ngIf="isActiveItems.isActiveToggleChangePassword" class="modal-overlay" onKeyDown="">
+  <app-change-password></app-change-password>
+</div>

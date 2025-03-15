@@ -2,12 +2,12 @@
   class="auth-container d-flex flex-column justify-content-center m-auto py-5 px-3"
 >
   <div class="mb-3 pb-2 w-100">
-    <h1 class="mb-0 text-center text-primary-header fw-semibold">Registro</h1>
+    <h1 class="mb-0 text-center text-primary-header fw-semibold display-4">Registro</h1>
   </div>
 
   <div
     id="information-container"
-    class="bg-dark-secondary border border-light-border rounded-3 p-3"
+    class="bg-dark border border-light-border rounded-3 p-3"
   >
     <form method="post" [formGroup]="registerForm" (ngSubmit)="submit()">
       <div class="form-floating custom-floating mb-3">
@@ -150,7 +150,8 @@
       <div class="form-floating custom-floating mb-3">
         <input
           id="floatingAddress"
-          class="form-control text-light"a
+          class="form-control text-light"
+          a
           type="text"
           formControlName="address"
           placeholder="Dirección"
@@ -173,12 +174,18 @@
         </div>
       </div>
 
-      <div class="mb-0">
+      <div class="mb-0 d-flex flex-column gap-2">
         <button
           type="submit"
           class="btn btn-md p-3 btn-primary-container border border-primary text-white w-100"
         >
           Finalizar registro
+        </button>
+        <button
+          class="btn btn-md p-3 btn-btn-inactive hoverable border border-light-border text-shadow w-100"
+          [routerLink]="['/']"
+        >
+          Regresar
         </button>
       </div>
     </form>

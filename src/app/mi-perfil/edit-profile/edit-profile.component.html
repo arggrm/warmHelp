@@ -1,0 +1,162 @@
+<div id="edit-container" class="bg-dark slide-down-in rounded-3 p-3">
+  <div class="py-3 mb-2 text-center">
+    <span class="fw-semibold text-primary  display-6">Editar perfil</span>
+  </div>
+  <form method="post" [formGroup]="editForm" (ngSubmit)="submit()">
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="text"
+        class="form-control text-light fw-lighter"
+        id="floatingUsername"
+        placeholder="Usuario"
+        formControlName="username"
+        [class.is-invalid]="
+          editForm.get('username')?.invalid && editForm.get('username')?.touched
+        "
+      />
+      <label for="floatingUsername" class="fw-semibold text-shadow"
+        >Usuario</label
+      >
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          editForm.get('username')?.invalid && editForm.get('username')?.touched
+        "
+      >
+        El usuario es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="text"
+        class="form-control text-light fw-lighter"
+        id="floatingFirstName"
+        placeholder="Nombre"
+        formControlName="firstName"
+        [class.is-invalid]="
+          editForm.get('firstName')?.invalid &&
+          editForm.get('firstName')?.touched
+        "
+      />
+      <label for="floatingFirstName" class="fw-semibold text-shadow"
+        >Nombre</label
+      >
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          editForm.get('firstName')?.invalid &&
+          editForm.get('firstName')?.touched
+        "
+      >
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="text"
+        class="form-control text-light fw-lighter"
+        id="floatingLastName"
+        placeholder="Apellidos"
+        formControlName="lastName"
+        [class.is-invalid]="
+          editForm.get('lastName')?.invalid && editForm.get('lastName')?.touched
+        "
+      />
+      <label for="floatingLastName" class="fw-semibold text-shadow"
+        >Apellidos</label
+      >
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          editForm.get('lastName')?.invalid && editForm.get('lastName')?.touched
+        "
+      >
+        Los apellidos son obligatorios.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="email"
+        class="form-control text-light fw-lighter"
+        id="floatingEmail"
+        placeholder="Email"
+        formControlName="email"
+        [class.is-invalid]="
+          editForm.get('email')?.invalid && editForm.get('email')?.touched
+        "
+      />
+      <label for="floatingEmail" class="fw-semibold text-shadow">Email</label>
+      <div
+        class="invalid-feedback"
+        *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched"
+      >
+        El email es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="tel"
+        class="form-control text-light fw-lighter"
+        id="floatingPhone"
+        placeholder="Teléfono"
+        formControlName="phone"
+        [class.is-invalid]="
+          editForm.get('phone')?.invalid && editForm.get('phone')?.touched
+        "
+      />
+      <label for="floatingPhone" class="fw-semibold text-shadow"
+        >Teléfono</label
+      >
+      <div
+        class="invalid-feedback"
+        *ngIf="editForm.get('phone')?.invalid && editForm.get('phone')?.touched"
+      >
+        El teléfono es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-floating custom-floating mb-3">
+      <input
+        type="text"
+        class="form-control text-light fw-lighter"
+        id="floatingAddress"
+        placeholder="Dirección"
+        formControlName="address"
+        [class.is-invalid]="
+          editForm.get('address')?.invalid && editForm.get('address')?.touched
+        "
+      />
+      <label for="floatingAddress" class="fw-semibold text-shadow"
+        >Dirección</label
+      >
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          editForm.get('address')?.invalid && editForm.get('address')?.touched
+        "
+      >
+        La dirección es obligatoria.
+      </div>
+    </div>
+
+    <div class="mb-0 d-flex flex-column gap-2">
+      <button
+        type="submit"
+        class="btn btn-md p-3 btn-primary-container border border-primary text-white w-100"
+        [disabled]="editForm.invalid"
+      >
+        Guardar cambios
+      </button>
+      <button
+        class="btn btn-md p-3 btn-btn-inactive hoverable border border-light-border text-shadow w-100"
+        (click)="closeEditProfile()"
+      >
+        Regresar
+      </button>
+    </div>
+  </form>
+</div>
