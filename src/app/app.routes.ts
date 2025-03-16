@@ -13,10 +13,12 @@ import { authGuard } from './services/guards/auth.guard';
 import { publicGuard } from './services/guards/public.guard';
 import { MisProductosComponent } from './backoffice/mis-productos/mis-productos.component';
 import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
+import { TestApiComponent } from './test-api/test-api.component';
 
 // Rutas de Cliente
 const clientRoutes: Routes = [
   { path: "", component: HomeComponent },
+  { path: "test", component: TestApiComponent },
   { path: "login", component: LoginComponent, canActivate: [publicGuard] },
   { path: "register", component: RegistroComponent, canActivate: [publicGuard] },
   { path: "my-profile", component: MiPerfilComponent },

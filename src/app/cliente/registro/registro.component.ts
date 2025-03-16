@@ -63,7 +63,7 @@ export class RegistroComponent {
         } as LoginInterface).subscribe({
           next: (loginData) => {
             this.tokenService.saveTokens(loginData.token, loginData.refreshToken);
-            this.userStateService.save(loginData.username, loginData.role);
+            this.userStateService.save(loginData.username, loginData.role, loginData.id);
             if (loginData.role == 'CLIENT') {
               this.router.navigate(['/']);
             } else {

@@ -1,1 +1,45 @@
-<p>detalles-producto works!</p>
+<div
+  id="details-container"
+  class="position-fixed bg-dark border border-light-border rounded-3 p-5"
+>
+  <div class="h-100">
+    <div class="h-100">
+      <div class="row h-100">
+        <div
+          id="product-image-container"
+          class="position-relative"
+        >
+          <button
+            id="close-button"
+            class="btn btn-primary position-absolute"
+            (click)="closeDetails()"
+          >
+            <i class="bi bi-x-lg"></i>
+          </button>
+
+          <div class="">
+            <div class="row w-100 ps-2">
+              <div class="col-12 col-lg-6 p-0 w-lg-100 rounded-3 border border-light overflow-hidden">
+                <img
+                  src="{{ product.image }}"
+                  alt="{{ product.name }}"
+                  class="object-fit-contain"
+                />
+              </div>
+          
+              <div class="col-12 col-lg-6 w-lg-100 border border-light">
+                <h3 class="fw-semibold text-light display-4">{{ product.name }}</h3>
+                <span class="fw-lighter text-shadow">{{ product.currency === "USD" ? "$" : "€"}}{{ product.price }}</span>
+                <app-star-rating [rating]="product.rating || 0"></app-star-rating>
+                <p>{{ product.description }}</p>
+              </div>
+            </div>
+          </div>
+          
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

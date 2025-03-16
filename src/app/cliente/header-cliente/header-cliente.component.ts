@@ -36,14 +36,11 @@ export class HeaderClienteComponent {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscription?.unsubscribe();
   }
 
   toggleItem(option: keyof HeaderButtonStatus): void {
     this.headerButtonsStatusService.toggleItem(option);
-    console.log(this.isActiveItems);
   }
 
   isLoggedIn() {

@@ -1,1 +1,61 @@
-<p>tienda works!</p>
+<div id="new-products-container" class="view w-100 mx-auto mb-5">
+    <div class="px-5 py-4 text-center">
+      <h1 class="mb-0 text-primary fw-light display-4">Productos destacados</h1>
+    </div>
+    <div
+      class="container-fluid bg-dark border-top border-bottom border-light-border p-4"
+    >
+      <div class="row g-4">
+        <div
+          class="col-12 col-md-6 col-lg-3"
+          *ngFor="let product of products"
+        >
+          <div
+            class="card border bg-dark-secondary border-light-border"
+            style="height: 100%"
+          >
+            <div
+              class="card-img-top w-100 position-relative"
+              style="height: 300px"
+            >
+              <img
+                src="{{ product.image }}"
+                class="card-img-top w-100 h-100 object-fit-cover"
+                alt="{{ product.name }}"
+              />
+              <button
+                class="btn btn-primary-container border border-primary position-absolute bottom-0 end-0 translate-middle"
+              >
+                <i class="bi bi-cart-plus"></i>
+              </button>
+            </div>
+
+            <hr class="text-light-border m-0" />
+
+            <div class="card-body text-light">
+              <div class="d-flex justify-content-between">
+                <h5 class="card-title fw-light w-100">{{ product.name }}</h5>
+                <span class="fw-lighter text-shadow"
+                  >{{ product.currency === "USD" ? "$" : "€"
+                  }}{{ product.price }}</span
+                >
+              </div>
+              <app-star-rating [rating]="product.rating || 0"></app-star-rating>
+            </div>
+            <hr class="text-light-border m-0" />
+            <div class="w-100 d-flex justify-content-center p-3">
+              <a
+                class="btn btn-primary-container border border-primary w-100"
+                (click)="toggleDetails()"
+                >Ver producto</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isActiveToggleDetails" class="modal-overlay">
+    <app-detalles-producto></app-detalles-producto>
+  </div>

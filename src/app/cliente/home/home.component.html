@@ -1,1 +1,202 @@
-<p>home works!</p>
+<div>
+  <!-- Home title -->
+  <div id="home-title-container" class="w-100 mx-auto">
+    <!-- Background image -->
+    <div class="background-title ">
+      <img
+        src="images/home/background-title.jpg"
+        class="d-block w-100 h-100 object-fit-cover"
+        alt="background-title"
+      />
+      <!-- Overlay -->
+      <div
+        *ngIf="isLoggedIn()"
+        class="position-absolute top-0 end-0 w-100 h-100 px-5 z-1 bg-black bg-opacity-50"
+      >
+        <div class="d-flex flex-column justify-content-center h-100">
+          <h2 class="fw-light text-primary-header display-5">
+            Bienvenido, {{ name }}
+          </h2>
+          <p class="mb-0 fw-lighter text-light">
+            Descubre y compra minerales de calidad.
+          </p>
+          <div class="mt-4">
+            <button
+              class="btn btn-lg py-2 px-4 btn-primary-container border border-primary text-white d-flex align-items-center"
+              [routerLink]="['/tienda']"
+            >
+              Ir a la tienda
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="!isLoggedIn()"
+        class="position-absolute top-0 end-0 w-100 h-100 px-5 z-1 bg-black bg-opacity-50"
+      >
+        <div class="d-flex flex-column justify-content-center h-100">
+          <h2 class="fw-light text-primary-header display-5">
+            ¿Quieres comprar minerales?
+          </h2>
+          <p class="mb-0 fw-lighter text-light">
+            Únete a la tienda de minerales de calidad y descubre nuestros
+            productos.
+          </p>
+          <div class="mt-4">
+            <button
+              class="btn btn-lg py-2 px-4 btn-primary-container border border-primary text-white d-flex align-items-center"
+              [routerLink]="['/login']"
+            >
+              Iniciar sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="text-light-border m-0" />
+
+  <!-- Productos destacados -->
+  <div id="best-products-container" class="view w-100 mx-auto mb-5">
+    <div class="px-5 py-4 text-center">
+      <h1 class="mb-0 text-primary fw-light display-4">Los mejores</h1>
+    </div>
+
+    <div
+      class="container-fluid bg-dark border-top border-bottom border-light-border p-0"
+      style="height: 400px"
+    >
+      <div
+        id="bestMineralsCarousel"
+        class="carousel slide carousel-fade h-100 w-100 w-lg-50 mx-auto"
+        data-bs-ride="carousel"
+      >
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+          <button
+            *ngFor="let product of bestMinerals; let i = index"
+            type="button"
+            data-bs-target="#bestMineralsCarousel"
+            [attr.data-bs-slide-to]="i"
+            [class.active]="i === 0"
+            aria-current="true"
+            [attr.aria-label]="'Slide ' + (i + 1)"
+          ></button>
+        </div>
+
+        <!-- Contenido del carrusel -->
+        <div class="carousel-inner h-100">
+          <div
+            *ngFor="let product of bestMinerals; let i = index"
+            class="carousel-item h-100"
+            [class.active]="i === 0"
+            data-bs-interval="4000"
+          >
+            <img
+              [src]="product.image"
+              [alt]="product.name"
+              class="d-block w-100 h-100 object-fit-cover"
+            />
+
+            <div
+              class="carousel-caption bg-black bg-opacity-75 position-absolute top-0 bottom-0 start-0 h-100 w-100 p-4"
+            >
+              <div
+                class="d-flex flex-column align-items-center justify-content-center h-100 mx-5"
+              >
+                <h5 class="fw-lighter text-light display-2">
+                  {{ product.name }}
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles -->
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#bestMineralsCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#bestMineralsCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr class="text-light-border m-0" />
+
+  <!-- Productos nuevos -->
+  <div id="new-products-container" class="view w-100 mx-auto mb-5">
+    <div class="px-5 py-4 text-center">
+      <h1 class="mb-0 text-primary fw-light display-4">Minerales nuevos</h1>
+    </div>
+    <div
+      class="container-fluid bg-dark border-top border-bottom border-light-border p-4"
+    >
+      <div class="row g-4">
+        <div
+          class="col-12 col-md-6 col-lg-3"
+          *ngFor="let product of newMinerals"
+        >
+          <div
+            class="card border bg-dark-secondary border-light-border"
+            style="height: 100%"
+          >
+            <div
+              class="card-img-top w-100 position-relative"
+              style="height: 300px"
+            >
+              <img
+                src="{{ product.image }}"
+                class="card-img-top w-100 h-100 object-fit-cover"
+                alt="{{ product.name }}"
+              />
+              <button
+                class="btn btn-primary-container border border-primary position-absolute bottom-0 end-0 translate-middle"
+              >
+                <i class="bi bi-cart-plus"></i>
+              </button>
+            </div>
+
+            <hr class="text-light-border m-0" />
+
+            <div class="card-body text-light">
+              <div class="d-flex justify-content-between">
+                <h5 class="card-title fw-light w-100">{{ product.name }}</h5>
+                <span class="fw-lighter text-shadow"
+                  >{{ product.currency === "USD" ? "$" : "€"
+                  }}{{ product.price }}</span
+                >
+              </div>
+              <p class="card-text fw-lighter">
+                {{ product.description | truncateText : 50 }}
+              </p>
+            </div>
+            <hr class="text-light-border m-0" />
+            <div class="w-100 d-flex justify-content-center p-3">
+              <a
+                href="#"
+                class="btn btn-primary-container border border-primary w-100"
+                >Ver producto</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

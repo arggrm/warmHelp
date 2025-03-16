@@ -10,9 +10,9 @@ import { UserStateService } from './user-state.service';
   providedIn: 'root'
 })
 export class CredentialsService {
-  
+
   private readonly usersUrl: string = `${environment.apiUrl}/users`;
-  
+
   constructor(
     private readonly http: HttpClient,
     private readonly tokenService: TokenService,
@@ -20,22 +20,24 @@ export class CredentialsService {
   ) { }
 
   login(credentials: LoginInterface): Observable<any> {
-    console.log(`${this.usersUrl}/login`);
     return this.http.post<any>(`${this.usersUrl}/login`, credentials);
   }
 
   register(userData: UserInterface): Observable<any> {
-    return this.http.post<any>(`${this.usersUrl}/register`, userData)
+    return this.http.post<any>(`${this.usersUrl}/register`, userData);
   }
 
-  getProfile(): Observable<any> {
-    return this.http.get<any>(`${this.usersUrl}/profile`);
+  getProfile(id: number): Observable<any> {
+    const token = this.tokenService.getAccessToken();  // Obtener el token
+    const headers = { 'Authorization': `Bearer ${token}` };
+    
+    return this.http.get<any>(`${this.usersUrl}/info/${id}`, { headers });
   }
 
   edit(arg0: UserInterface): Observable<any> {
     throw new Error('Method not implemented.');
   }
-  
+
   logout(): void {
     this.tokenService.removeToken();
     this.userStateService.removeSession();

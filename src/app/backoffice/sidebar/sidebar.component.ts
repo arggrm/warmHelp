@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { SidebarStatusService } from '../../services/status/sidebar-status.service';
 import { Router, RouterModule } from '@angular/router';
-import { TokenService } from '../../services/auth/token.service';
-import { UserStateService } from '../../services/auth/user-state.service';
 import { PopupService } from '../../services/utils/popup.service';
+import { CredentialsService } from '../../services/auth/credentials.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -31,8 +30,7 @@ export class SidebarComponent implements OnInit {
   ];
   constructor(
     private readonly sidebarStatusService: SidebarStatusService,
-    private readonly tokenService: TokenService,
-    private readonly userStateService: UserStateService,
+    private readonly credentialsService: CredentialsService,
     private readonly router: Router,
     private readonly popupService: PopupService,
   ) { }
@@ -46,12 +44,11 @@ export class SidebarComponent implements OnInit {
   logout(): void {
     this.popupService.loader('Cerrando sesión...', 'Espere un momento');
 
-    this.tokenService.removeToken();
-    this.userStateService.removeSession();
+    this.credentialsService.logout();
 
     setTimeout(() => {
       this.popupService.close();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }, 1500);
   }
 }

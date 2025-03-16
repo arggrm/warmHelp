@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { HeaderButtonsStatusService } from '../../services/status/header-buttons-status.service';
-import { TokenService } from '../../services/auth/token.service';
 import { PopupService } from '../../services/utils/popup.service';
 import { UserStateService } from '../../services/auth/user-state.service';
+import { CredentialsService } from '../../services/auth/credentials.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class TabProfileComponent {
   constructor(
     private readonly elRef: ElementRef,
     private readonly headerButtonsStatusService: HeaderButtonsStatusService,
-    private readonly tokenService: TokenService,
+    private readonly credentialsService: CredentialsService,
     private readonly popupService: PopupService,
     private readonly userStateService: UserStateService,    
     private readonly router: Router,    
@@ -44,12 +44,11 @@ export class TabProfileComponent {
   logout(): void {
     this.popupService.loader('Cerrando sesión...', 'Espere un momento');
 
-    this.tokenService.removeToken();
-    this.userStateService.removeSession();
+    this.credentialsService.logout();
 
     setTimeout(() => {
       this.popupService.close();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }, 1500);
   }
 }

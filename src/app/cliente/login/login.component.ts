@@ -43,8 +43,8 @@ export class LoginComponent {
         this.popupService.loader("Cargando...", "Espere un momento");
 
         setTimeout(() => {
-          this.tokenService.saveTokens(data.token, "234325423423")
-          this.userStateService.save(data.username, data.role)
+          this.tokenService.saveTokens(data.token, "234325423423");
+          this.userStateService.save(data.username, data.role, data.id);
           this.popupService.close();
           if (data.role == 'CLIENT' ) {
             this.router.navigate(['/']);

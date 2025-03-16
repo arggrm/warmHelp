@@ -1,0 +1,17 @@
+#home-title-container {
+
+    .background-title {
+        position: relative;
+        height: 250px;
+        width: 100dvw;
+    }
+}
+
+.view {
+    width: 100dvw ;
+    min-height: 80dvh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

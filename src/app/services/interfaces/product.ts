@@ -1,15 +1,15 @@
 export enum Currency {
-    USD = "USD",
-    EUR = "EUR",
+  USD = "USD",
+  EUR = "EUR",
 }
 
 export interface ProductInterface {
-    name: string;
-    image: string;
-    currency: Currency;
-    price: number;
-    tax: number;
-    description: string;
+  name: string;
+  image: string;
+  currency: Currency;
+  price: number;
+  tax: number;
+  description: string;
 }
 
 export interface MisProductosStatus {
@@ -17,4 +17,4 @@ export interface MisProductosStatus {
   isActiveToggleCreateProduct: boolean;
 }
 
-export type ProductCardInterface = Pick<ProductInterface, "name" | "image" | "price">;
+export type ProductCardInterface = Pick<ProductInterface, "name" | "image" | "currency" | "description" | "price"> & { rating?: number };

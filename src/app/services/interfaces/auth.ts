@@ -13,6 +13,15 @@ export interface UserInterface {
     address: string;
 }
 
+export interface ProfileInterface extends UserInterface {
+  id: number;
+  firstName: string;
+  lastName: string;
+  address: string;
+  phone: string;
+  email: string;
+}
+
 export interface MiPerfilStatus {
   isActiveToggleEditProfile: boolean;
   isActiveToggleChangePassword: boolean;

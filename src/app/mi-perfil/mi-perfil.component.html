@@ -1,6 +1,5 @@
 <div id="profile-container" class="container py-5 px-3">
   <!-- Perfil Header -->
-
   <div class="w-100 mb-3 pb-2">
     <h2 class="mb-0 text-center text-primary-header fw-semibold display-4">
       Mi perfil
@@ -29,7 +28,7 @@
             class="d-flex flex-column justify-content-center align-items-center"
           >
             <div class="profile-img-wrapper">
-              <img src="profile.jpg" alt="profile" class="profile-img" />
+              <img [src]="userProfile.profilePhoto || 'profile.jpg'" alt="profile" class="profile-img" />
             </div>
           </div>
 
@@ -37,8 +36,8 @@
             id="profile-name-container"
             class="d-flex flex-column align-items-center"
           >
-            <h4 class="text-light fw-bolder">Nick Rodríguez</h4>
-            <span class="text-shadow fw-lighter">desde 2021</span>
+            <h4 class="text-light fw-bolder">{{ userProfile.firstName }} {{ userProfile.lastName }}</h4>
+            <span class="text-shadow fw-lighter">desde {{ userProfile.createdAt | date: 'yyyy' }}</span>
           </div>
         </div>
       </div>
@@ -66,7 +65,7 @@
               class="col d-flex align-items-center text-light rounded-end-3 p-3"
             >
               <i class="bi bi-at me-2"></i>
-              <span class="fw-light">nick_rod</span>
+              <span class="fw-light">{{ userProfile.username }}</span>
             </div>
           </div>
 
@@ -82,7 +81,7 @@
               class="col d-flex align-items-center text-light rounded-end-3 p-3"
             >
               <i class="bi bi-envelope-fill me-2"></i>
-              <span class="fw-light">nick_rodriguez&#64;warmhelp.com</span>
+              <span class="fw-light">{{ userProfile.email }}</span>
             </div>
           </div>
 
@@ -98,7 +97,7 @@
               class="col d-flex align-items-center text-light rounded-end-3 p-3"
             >
               <i class="bi bi-telephone-fill me-2"></i>
-              <span class="fw-light">6665859</span>
+              <span class="fw-light">{{ userProfile.phone || 'No disponible' }}</span>
             </div>
           </div>
 
@@ -114,7 +113,7 @@
               class="col d-flex align-items-center text-light rounded-end-3 p-3"
             >
               <i class="bi bi-house-fill me-2"></i>
-              <span class="fw-light">Calle de la Palma, 12</span>
+              <span class="fw-light">{{ userProfile.address || 'No disponible' }}</span>
             </div>
           </div>
         </div>
@@ -165,10 +164,12 @@
   </div>
 </div>
 
+<!-- Modal de Editar Perfil -->
 <div *ngIf="isActiveItems.isActiveToggleEditProfile" class="modal-overlay" onKeyDown="">
   <app-edit-profile></app-edit-profile>
 </div>
 
+<!-- Modal de Cambiar Contraseña -->
 <div *ngIf="isActiveItems.isActiveToggleChangePassword" class="modal-overlay" onKeyDown="">
   <app-change-password></app-change-password>
 </div>
