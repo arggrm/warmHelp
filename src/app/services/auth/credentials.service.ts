@@ -45,10 +45,9 @@ export class CredentialsService {
       body: { password: password }
     });
   }
-
+  
   logout(): void {
     this.tokenService.removeToken();
     this.userStateService.removeSession();
   }
-
 }
