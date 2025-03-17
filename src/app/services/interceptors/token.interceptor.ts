@@ -7,8 +7,6 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const tokenService = inject(TokenService);
   const accessToken = tokenService.getAccessToken();
 
-  console.log('tokenInterceptor  ' + accessToken);
-
   const cloneReq = req.clone({
     setHeaders: {
       'Content-Type': 'application/json',

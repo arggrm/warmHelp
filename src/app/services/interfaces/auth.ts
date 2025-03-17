@@ -1,16 +1,14 @@
 export enum Role {
-    ADMIN = "ADMIN",
-    CLIENT = "CLIENT",
-    SELLER = "SELLER"
+  ADMIN = "ADMIN",
+  CLIENT = "CLIENT",
+  SELLER = "SELLER"
 }
 
 export interface UserInterface {
-    username: string;
-    password: string;
-    roleName: Role;
-    firstName: string;
-    lastName: string;
-    address: string;
+  username: string;
+  password: string;
+  createdAt: string;
+  roleName: Role;
 }
 
 export interface ProfileInterface extends UserInterface {
@@ -20,6 +18,8 @@ export interface ProfileInterface extends UserInterface {
   address: string;
   phone: string;
   email: string;
+  username: string;
+  user: UserInterface;
 }
 
 export interface MiPerfilStatus {

@@ -10,11 +10,7 @@ export class UserStateService {
   // Guardar la información del usuario, incluido el ID
   save(username: string, role: string, id: number): void  {
     sessionStorage.setItem(this.USER_KEY, JSON.stringify({username, role, id}));
-
-
-    console.log(sessionStorage.getItem(this.USER_KEY));
   }
-
 
   getToken(): string | null {
     const session = JSON.parse(<string>sessionStorage.getItem(this.USER_KEY));

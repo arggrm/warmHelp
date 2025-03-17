@@ -1,13 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ChangePasswordComponent } from "./change-password/change-password.component";
-import { MiPerfilStatus } from '../services/interfaces/auth';
+import { MiPerfilStatus, ProfileInterface } from '../services/interfaces/auth';
 import { MiPerfilStatusService } from '../services/status/profile-status.service';
 import { UserStateService } from '../services/auth/user-state.service';
 import { CredentialsService } from '../services/auth/credentials.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { PopupService } from '../services/utils/popup.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +20,9 @@ export class MiPerfilComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription | undefined;
 
-  userProfile: any = {};
+  userProfile: ProfileInterface | null = null;
+
+  userId: number | null = null;
 
   isActiveItems: MiPerfilStatus = {
     isActiveToggleEditProfile: false,
@@ -30,6 +33,8 @@ export class MiPerfilComponent implements OnInit, OnDestroy {
     private readonly userStateService: UserStateService,
     private readonly miPerfilStatusService: MiPerfilStatusService,
     private readonly credentialsService: CredentialsService,
+    private readonly popupService: PopupService,
+    private readonly router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +42,7 @@ export class MiPerfilComponent implements OnInit, OnDestroy {
     this.subscription = this.miPerfilStatusService.miPerfilStatus$.subscribe((status) => {
       this.isActiveItems = status;
     });
+    this.userId = this.userStateService.getId();
   }
 
   ngOnDestroy(): void {
@@ -45,21 +51,39 @@ export class MiPerfilComponent implements OnInit, OnDestroy {
     }
   }
 
-  loadUserProfile(): void {
-    const userId = this.userStateService.getId();  // Obtener el ID del usuario desde el servicio
-
-    if (userId) {
-      this.credentialsService.getProfile(userId).subscribe({
+  async deleteAccount() {
+    const password = await this.popupService.showDeleteAccountConfirmation();
+    if (password) {
+      this.credentialsService.deleteAccount(this.userId ?? 0, password, this.userStateService.getToken() ?? '').subscribe({
         next: (response) => {
-          this.userProfile = response;
+          this.popupService.showMessage('¡Cuenta eliminada!', response.message, 'success');
+          this.credentialsService.logout();
+          this.router.navigate(['/']);
         },
         error: (error) => {
-          console.error('Error al cargar el perfil del usuario', error);
+          console.error('Error al eliminar la cuenta', error);
+          this.popupService.showMessage('Error', error.error.message, 'error');
         }
       });
     } else {
+      this.popupService.showMessage('Acción cancelada', 'No se ha realizado ninguna acción', 'info');
+    }
+  }
+
+  loadUserProfile(): void {
+
+    if (!this.userStateService.getId()) {
       console.error('No se ha encontrado el ID del usuario en la sesión');
     }
+
+    this.credentialsService.getProfile(this.userStateService.getId() ?? 0).subscribe({
+      next: (response) => {
+        this.userProfile = response;
+      },
+      error: (error) => {
+        console.error('Error al cargar el perfil del usuario', error);
+      }
+    });
   }
 
   toggleItem(option: keyof MiPerfilStatus): void {

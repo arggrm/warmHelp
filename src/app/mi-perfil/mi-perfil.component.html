@@ -28,7 +28,7 @@
             class="d-flex flex-column justify-content-center align-items-center"
           >
             <div class="profile-img-wrapper">
-              <img [src]="userProfile.profilePhoto || 'profile.jpg'" alt="profile" class="profile-img" />
+              <img src="profile.jpg" alt="profile" class="profile-img" />
             </div>
           </div>
 
@@ -36,8 +36,8 @@
             id="profile-name-container"
             class="d-flex flex-column align-items-center"
           >
-            <h4 class="text-light fw-bolder">{{ userProfile.firstName }} {{ userProfile.lastName }}</h4>
-            <span class="text-shadow fw-lighter">desde {{ userProfile.createdAt | date: 'yyyy' }}</span>
+            <h4 class="text-light fw-bolder">{{ userProfile?.firstName }} {{ userProfile?.lastName }}</h4>
+            <span class="text-shadow fw-lighter">desde {{ userProfile?.createdAt | date: 'yyyy' }}</span>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
               class="col d-flex align-items-center text-light rounded-end-3 p-3"
             >
               <i class="bi bi-at me-2"></i>
-              <span class="fw-light">{{ userProfile.username }}</span>
+              <span class="fw-light">{{ userProfile?.user?.username }}</span>
             </div>
           </div>
 
@@ -81,7 +81,7 @@
               class="col d-flex align-items-center text-light rounded-end-3 p-3"
             >
               <i class="bi bi-envelope-fill me-2"></i>
-              <span class="fw-light">{{ userProfile.email }}</span>
+              <span class="fw-light">{{ userProfile?.email || 'No disponible' }}</span>
             </div>
           </div>
 
@@ -97,7 +97,7 @@
               class="col d-flex align-items-center text-light rounded-end-3 p-3"
             >
               <i class="bi bi-telephone-fill me-2"></i>
-              <span class="fw-light">{{ userProfile.phone || 'No disponible' }}</span>
+              <span class="fw-light">{{ userProfile?.phone || 'No disponible' }}</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@
               class="col d-flex align-items-center text-light rounded-end-3 p-3"
             >
               <i class="bi bi-house-fill me-2"></i>
-              <span class="fw-light">{{ userProfile.address || 'No disponible' }}</span>
+              <span class="fw-light">{{ userProfile?.address || 'No disponible' }}</span>
             </div>
           </div>
         </div>
@@ -152,6 +152,7 @@
               <a>
                 <button
                   class="btn btn-danger-container border border-danger text-white py-2 w-100"
+                  (click)="deleteAccount()"
                 >
                   Borrar cuenta
                 </button>

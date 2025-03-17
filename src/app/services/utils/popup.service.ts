@@ -66,4 +66,50 @@ export class PopupService {
     Swal.close()
   }
 
+  async showDeleteAccountConfirmation(): Promise<string | false> {
+    const result = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      background: '#0c213d',
+      color: '#7a94b9',
+      confirmButtonColor: '#8e1c00',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: '¡Sí, borrar cuenta!',
+      cancelButtonText: 'Cancelar',
+    });
+
+    if (result.isConfirmed) {
+      const { value: password } = await Swal.fire({
+        title: 'Por favor, ingresa tu contraseña para confirmar',
+        input: 'password',
+        background: '#0c213d',
+        color: '#7a94b9',
+        inputPlaceholder: 'Contraseña',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Confirmar',
+        confirmButtonColor: '#8e1c00',
+        inputValidator: (value) => {
+          if (!value) {
+            return '¡Por favor ingresa tu contraseña!';
+          } else {
+            return null; // or return an empty string, depending on your requirements
+          }
+        }
+      });
+
+      if (password) {
+        // Retorna la contraseña ingresada para que luego la utilices en la lógica de eliminación
+        return password;
+      } else {
+        // Si el usuario no ingresa la contraseña, la eliminación no se ejecutará
+        return false;
+      }
+    }
+
+    return false;
+  }
+
 }
